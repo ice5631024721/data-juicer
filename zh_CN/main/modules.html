@@ -215,7 +215,7 @@
 <li class="toctree-l1"><a class="reference internal" href="docs/DatasetCfg_ZH.html">数据集配置指南</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docs/BadDataExhibition_ZH.html">“坏”数据展览</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docs/DJ_SORA_ZH.html">DJ-SORA</a></li>
-<li class="toctree-l1"><a class="reference internal" href="docs/DJ_service_ZH.html">API服务化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/DJ_service_ZH.html">DJ_服务化</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docs/DeveloperGuide_ZH.html">开发者指南</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docs/Distributed_ZH.html">Data-Juicer 分布式数据处理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docs/Sandbox_ZH.html">沙盒实验室</a></li>
@@ -363,8 +363,8 @@
 <li class="toctree-l4"><a class="reference internal" href="data_juicer.analysis.html#submodules">Submodules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="data_juicer.analysis.html#module-data_juicer.analysis.collector">data_juicer.analysis.collector module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="data_juicer.analysis.html#module-data_juicer.analysis.column_wise_analysis">data_juicer.analysis.column_wise_analysis module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="data_juicer.analysis.html#module-data_juicer.analysis.correlation_analysis">data_juicer.analysis.correlation_analysis module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="data_juicer.analysis.html#module-data_juicer.analysis.diversity_analysis">data_juicer.analysis.diversity_analysis module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="data_juicer.analysis.html#module-data_juicer.analysis.draw">data_juicer.analysis.draw module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="data_juicer.analysis.html#module-data_juicer.analysis.measure">data_juicer.analysis.measure module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="data_juicer.analysis.html#module-data_juicer.analysis.overall_analysis">data_juicer.analysis.overall_analysis module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="data_juicer.analysis.html#module-data_juicer.analysis">Module contents</a></li>
@@ -383,6 +383,7 @@
 <li class="toctree-l4"><a class="reference internal" href="data_juicer.core.html#module-data_juicer.core.analyzer">data_juicer.core.analyzer module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="data_juicer.core.html#module-data_juicer.core.exporter">data_juicer.core.exporter module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="data_juicer.core.html#module-data_juicer.core.monitor">data_juicer.core.monitor module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="data_juicer.core.html#module-data_juicer.core.ray_exporter">data_juicer.core.ray_exporter module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="data_juicer.core.html#module-data_juicer.core.tracer">data_juicer.core.tracer module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="data_juicer.core.html#module-data_juicer.core">Module contents</a></li>
 </ul>
@@ -420,6 +421,11 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="data_juicer.tools.html">data_juicer.tools package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="data_juicer.tools.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="data_juicer.tools.html#module-data_juicer.tools.DJ_mcp_granular_ops">data_juicer.tools.DJ_mcp_granular_ops module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="data_juicer.tools.html#module-data_juicer.tools.DJ_mcp_recipe_flow">data_juicer.tools.DJ_mcp_recipe_flow module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="data_juicer.tools.html#module-data_juicer.tools.mcp_tool">data_juicer.tools.mcp_tool module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="data_juicer.tools.html#module-data_juicer.tools.op_search">data_juicer.tools.op_search module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="data_juicer.tools.html#module-data_juicer.tools">Module contents</a></li>
 </ul>
 </li>
@@ -492,7 +498,7 @@
     </aside>
   </div>
 </div>
-<script src="_static/documentation_options.js?v=79f47a88"></script>
+<script src="_static/documentation_options.js?v=2491dde2"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=5fa4622c"></script>

@@ -214,7 +214,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../docs/DatasetCfg_ZH.html">数据集配置指南</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../docs/BadDataExhibition_ZH.html">“坏”数据展览</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../docs/DJ_SORA_ZH.html">DJ-SORA</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../docs/DJ_service_ZH.html">API服务化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../docs/DJ_service_ZH.html">DJ_服务化</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../docs/DeveloperGuide_ZH.html">开发者指南</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../docs/Distributed_ZH.html">Data-Juicer 分布式数据处理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../docs/Sandbox_ZH.html">沙盒实验室</a></li>
@@ -358,9 +358,9 @@
 
 <div class="viewcode-block" id="NaiveReverseGrouper">
 <a class="viewcode-back" href="../../../../data_juicer.ops.grouper.html#data_juicer.ops.grouper.naive_reverse_grouper.NaiveReverseGrouper">[文档]</a>
-<span class="nd">@OPERATORS</span><span class="o">.</span><span class="n">register_module</span><span class="p">(</span><span class="s1">&#39;naive_reverse_grouper&#39;</span><span class="p">)</span>
+<span class="nd">@OPERATORS</span><span class="o">.</span><span class="n">register_module</span><span class="p">(</span><span class="s2">&quot;naive_reverse_grouper&quot;</span><span class="p">)</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">NaiveReverseGrouper</span><span class="p">(</span><span class="n">Grouper</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Split batched samples to samples. &quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Split batched samples to samples.&quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="NaiveReverseGrouper.__init__">
 <a class="viewcode-back" href="../../../../data_juicer.ops.grouper.html#data_juicer.ops.grouper.naive_reverse_grouper.NaiveReverseGrouper.__init__">[文档]</a>
@@ -380,7 +380,6 @@
 <div class="viewcode-block" id="NaiveReverseGrouper.process">
 <a class="viewcode-back" href="../../../../data_juicer.ops.grouper.html#data_juicer.ops.grouper.naive_reverse_grouper.NaiveReverseGrouper.process">[文档]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">):</span>
-
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">dataset</span>
 
@@ -389,17 +388,13 @@
         <span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">Fields</span><span class="o">.</span><span class="n">batch_meta</span> <span class="ow">in</span> <span class="n">sample</span><span class="p">:</span>
                 <span class="n">batch_metas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sample</span><span class="p">[</span><span class="n">Fields</span><span class="o">.</span><span class="n">batch_meta</span><span class="p">])</span>
-                <span class="n">sample</span> <span class="o">=</span> <span class="p">{</span>
-                    <span class="n">k</span><span class="p">:</span> <span class="n">sample</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
-                    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">sample</span> <span class="k">if</span> <span class="n">k</span> <span class="o">!=</span> <span class="n">Fields</span><span class="o">.</span><span class="n">batch_meta</span>
-                <span class="p">}</span>
+                <span class="n">sample</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">sample</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">sample</span> <span class="k">if</span> <span class="n">k</span> <span class="o">!=</span> <span class="n">Fields</span><span class="o">.</span><span class="n">batch_meta</span><span class="p">}</span>
             <span class="n">samples</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">convert_dict_list_to_list_dict</span><span class="p">(</span><span class="n">sample</span><span class="p">))</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_meta_export_path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">create_directory_if_not_exists</span><span class="p">(</span>
-                <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_meta_export_path</span><span class="p">))</span>
-            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_meta_export_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">create_directory_if_not_exists</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_meta_export_path</span><span class="p">))</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_meta_export_path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
                 <span class="k">for</span> <span class="n">batch_meta</span> <span class="ow">in</span> <span class="n">batch_metas</span><span class="p">:</span>
-                    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">batch_meta</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+                    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">batch_meta</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">samples</span></div>
 </div>
@@ -437,7 +432,7 @@
     </aside>
   </div>
 </div>
-<script src="../../../../_static/documentation_options.js?v=79f47a88"></script>
+<script src="../../../../_static/documentation_options.js?v=2491dde2"></script>
     <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/scripts/furo.js?v=5fa4622c"></script>

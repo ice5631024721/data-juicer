@@ -213,7 +213,7 @@
 <li class="toctree-l1"><a class="reference internal" href="docs/DatasetCfg_ZH.html">数据集配置指南</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docs/BadDataExhibition_ZH.html">“坏”数据展览</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docs/DJ_SORA_ZH.html">DJ-SORA</a></li>
-<li class="toctree-l1"><a class="reference internal" href="docs/DJ_service_ZH.html">API服务化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/DJ_service_ZH.html">DJ_服务化</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docs/DeveloperGuide_ZH.html">开发者指南</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docs/Distributed_ZH.html">Data-Juicer 分布式数据处理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docs/Sandbox_ZH.html">沙盒实验室</a></li>
@@ -360,6 +360,10 @@
 </li>
         <li><a href="data_juicer.analysis.html#data_juicer.analysis.ColumnWiseAnalysis.__init__">__init__() （data_juicer.analysis.ColumnWiseAnalysis 方法）</a>
 </li>
+        <li><a href="data_juicer.analysis.html#data_juicer.analysis.correlation_analysis.CorrelationAnalysis.__init__">__init__() （data_juicer.analysis.correlation_analysis.CorrelationAnalysis 方法）</a>
+</li>
+        <li><a href="data_juicer.analysis.html#data_juicer.analysis.CorrelationAnalysis.__init__">__init__() （data_juicer.analysis.CorrelationAnalysis 方法）</a>
+</li>
         <li><a href="data_juicer.analysis.html#data_juicer.analysis.diversity_analysis.DiversityAnalysis.__init__">__init__() （data_juicer.analysis.diversity_analysis.DiversityAnalysis 方法）</a>
 </li>
         <li><a href="data_juicer.analysis.html#data_juicer.analysis.DiversityAnalysis.__init__">__init__() （data_juicer.analysis.DiversityAnalysis 方法）</a>
@@ -427,6 +431,10 @@
         <li><a href="data_juicer.core.html#data_juicer.core.monitor.Monitor.__init__">__init__() （data_juicer.core.monitor.Monitor 方法）</a>
 </li>
         <li><a href="data_juicer.core.html#data_juicer.core.NestedDataset.__init__">__init__() （data_juicer.core.NestedDataset 方法）</a>
+</li>
+        <li><a href="data_juicer.core.html#data_juicer.core.ray_exporter.RayExporter.__init__">__init__() （data_juicer.core.ray_exporter.RayExporter 方法）</a>
+</li>
+        <li><a href="data_juicer.core.html#data_juicer.core.RayExporter.__init__">__init__() （data_juicer.core.RayExporter 方法）</a>
 </li>
         <li><a href="data_juicer.core.html#data_juicer.core.Tracer.__init__">__init__() （data_juicer.core.Tracer 方法）</a>
 </li>
@@ -564,6 +572,8 @@
 </li>
         <li><a href="data_juicer.ops.deduplicator.html#data_juicer.ops.deduplicator.ray_bts_minhash_deduplicator.EdgeBuffer.__init__">__init__() （data_juicer.ops.deduplicator.ray_bts_minhash_deduplicator.EdgeBuffer 方法）</a>
 </li>
+        <li><a href="data_juicer.ops.deduplicator.html#data_juicer.ops.deduplicator.ray_bts_minhash_deduplicator.GPUMinHashActor.__init__">__init__() （data_juicer.ops.deduplicator.ray_bts_minhash_deduplicator.GPUMinHashActor 方法）</a>
+</li>
         <li><a href="data_juicer.ops.deduplicator.html#data_juicer.ops.deduplicator.ray_bts_minhash_deduplicator.IdGenerator.__init__">__init__() （data_juicer.ops.deduplicator.ray_bts_minhash_deduplicator.IdGenerator 方法）</a>
 </li>
         <li><a href="data_juicer.ops.deduplicator.html#data_juicer.ops.deduplicator.ray_bts_minhash_deduplicator.RayBTSMinhashDeduplicator.__init__">__init__() （data_juicer.ops.deduplicator.ray_bts_minhash_deduplicator.RayBTSMinhashDeduplicator 方法）</a>
@@ -672,13 +682,9 @@
 </li>
         <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.LanguageIDScoreFilter.__init__">__init__() （data_juicer.ops.filter.LanguageIDScoreFilter 方法）</a>
 </li>
-        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.llm_difficulty_score_filter.LLMDifficultyScoreFilter.__init__">__init__() （data_juicer.ops.filter.llm_difficulty_score_filter.LLMDifficultyScoreFilter 方法）</a>
+        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.llm_analysis_filter.LLMAnalysisFilter.__init__">__init__() （data_juicer.ops.filter.llm_analysis_filter.LLMAnalysisFilter 方法）</a>
 </li>
-        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.llm_quality_score_filter.LLMQualityScoreFilter.__init__">__init__() （data_juicer.ops.filter.llm_quality_score_filter.LLMQualityScoreFilter 方法）</a>
-</li>
-        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.LLMDifficultyScoreFilter.__init__">__init__() （data_juicer.ops.filter.LLMDifficultyScoreFilter 方法）</a>
-</li>
-        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.LLMQualityScoreFilter.__init__">__init__() （data_juicer.ops.filter.LLMQualityScoreFilter 方法）</a>
+        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.LLMAnalysisFilter.__init__">__init__() （data_juicer.ops.filter.LLMAnalysisFilter 方法）</a>
 </li>
         <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.maximum_line_length_filter.MaximumLineLengthFilter.__init__">__init__() （data_juicer.ops.filter.maximum_line_length_filter.MaximumLineLengthFilter 方法）</a>
 </li>
@@ -754,12 +760,12 @@
 </li>
         <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.video_watermark_filter.VideoWatermarkFilter.__init__">__init__() （data_juicer.ops.filter.video_watermark_filter.VideoWatermarkFilter 方法）</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.VideoAestheticsFilter.__init__">__init__() （data_juicer.ops.filter.VideoAestheticsFilter 方法）</a>
 </li>
         <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.VideoAspectRatioFilter.__init__">__init__() （data_juicer.ops.filter.VideoAspectRatioFilter 方法）</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.VideoDurationFilter.__init__">__init__() （data_juicer.ops.filter.VideoDurationFilter 方法）</a>
 </li>
         <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.VideoFramesTextSimilarityFilter.__init__">__init__() （data_juicer.ops.filter.VideoFramesTextSimilarityFilter 方法）</a>
@@ -862,7 +868,15 @@
 </li>
         <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.Difference_Area_Generator_Mapper.__init__">__init__() （data_juicer.ops.mapper.Difference_Area_Generator_Mapper 方法）</a>
 </li>
+        <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.Difference_Caption_Generator_Mapper.__init__">__init__() （data_juicer.ops.mapper.Difference_Caption_Generator_Mapper 方法）</a>
+</li>
+        <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.download_file_mapper.DownloadFileMapper.__init__">__init__() （data_juicer.ops.mapper.download_file_mapper.DownloadFileMapper 方法）</a>
+</li>
+        <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.DownloadFileMapper.__init__">__init__() （data_juicer.ops.mapper.DownloadFileMapper 方法）</a>
+</li>
         <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.expand_macro_mapper.ExpandMacroMapper.__init__">__init__() （data_juicer.ops.mapper.expand_macro_mapper.ExpandMacroMapper 方法）</a>
+</li>
+        <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.ExpandMacroMapper.__init__">__init__() （data_juicer.ops.mapper.ExpandMacroMapper 方法）</a>
 </li>
         <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.extract_entity_attribute_mapper.ExtractEntityAttributeMapper.__init__">__init__() （data_juicer.ops.mapper.extract_entity_attribute_mapper.ExtractEntityAttributeMapper 方法）</a>
 </li>
@@ -1140,6 +1154,10 @@
 </li>
         <li><a href="data_juicer.ops.selector.html#data_juicer.ops.selector.TopkSpecifiedFieldSelector.__init__">__init__() （data_juicer.ops.selector.TopkSpecifiedFieldSelector 方法）</a>
 </li>
+        <li><a href="data_juicer.tools.html#data_juicer.tools.op_search.OPRecord.__init__">__init__() （data_juicer.tools.op_search.OPRecord 方法）</a>
+</li>
+        <li><a href="data_juicer.tools.html#data_juicer.tools.op_search.OPSearcher.__init__">__init__() （data_juicer.tools.op_search.OPSearcher 方法）</a>
+</li>
         <li><a href="data_juicer.utils.html#data_juicer.utils.cache_utils.DatasetCacheControl.__init__">__init__() （data_juicer.utils.cache_utils.DatasetCacheControl 方法）</a>
 </li>
         <li><a href="data_juicer.utils.html#data_juicer.utils.ckpt_utils.CheckpointManager.__init__">__init__() （data_juicer.utils.ckpt_utils.CheckpointManager 方法）</a>
@@ -1154,7 +1172,9 @@
 </li>
         <li><a href="data_juicer.utils.html#data_juicer.utils.logger_utils.StreamToLoguru.__init__">__init__() （data_juicer.utils.logger_utils.StreamToLoguru 方法）</a>
 </li>
-        <li><a href="data_juicer.utils.html#data_juicer.utils.model_utils.APIModel.__init__">__init__() （data_juicer.utils.model_utils.APIModel 方法）</a>
+        <li><a href="data_juicer.utils.html#data_juicer.utils.model_utils.ChatAPIModel.__init__">__init__() （data_juicer.utils.model_utils.ChatAPIModel 方法）</a>
+</li>
+        <li><a href="data_juicer.utils.html#data_juicer.utils.model_utils.EmbeddingAPIModel.__init__">__init__() （data_juicer.utils.model_utils.EmbeddingAPIModel 方法）</a>
 </li>
         <li><a href="data_juicer.utils.html#data_juicer.utils.registry.Registry.__init__">__init__() （data_juicer.utils.registry.Registry 方法）</a>
 </li>
@@ -1181,6 +1201,8 @@
         <li><a href="data_juicer.core.data.html#data_juicer.core.data.NestedDataset.add_column">add_column() （data_juicer.core.data.NestedDataset 方法）</a>
 </li>
         <li><a href="data_juicer.core.html#data_juicer.core.NestedDataset.add_column">add_column() （data_juicer.core.NestedDataset 方法）</a>
+</li>
+        <li><a href="data_juicer.tools.html#data_juicer.tools.mcp_tool.add_extra_cfg">add_extra_cfg()（在 data_juicer.tools.mcp_tool 模块中）</a>
 </li>
         <li><a href="data_juicer.ops.deduplicator.html#data_juicer.ops.deduplicator.ray_bts_minhash_deduplicator.BTSUnionFind.add_key_value_pairs">add_key_value_pairs() （data_juicer.ops.deduplicator.ray_bts_minhash_deduplicator.BTSUnionFind 方法）</a>
 </li>
@@ -1214,6 +1236,10 @@
 </li>
         <li><a href="data_juicer.analysis.html#data_juicer.analysis.ColumnWiseAnalysis.analyze">analyze() （data_juicer.analysis.ColumnWiseAnalysis 方法）</a>
 </li>
+        <li><a href="data_juicer.analysis.html#data_juicer.analysis.correlation_analysis.CorrelationAnalysis.analyze">analyze() （data_juicer.analysis.correlation_analysis.CorrelationAnalysis 方法）</a>
+</li>
+        <li><a href="data_juicer.analysis.html#data_juicer.analysis.CorrelationAnalysis.analyze">analyze() （data_juicer.analysis.CorrelationAnalysis 方法）</a>
+</li>
         <li><a href="data_juicer.analysis.html#data_juicer.analysis.diversity_analysis.DiversityAnalysis.analyze">analyze() （data_juicer.analysis.diversity_analysis.DiversityAnalysis 方法）</a>
 </li>
         <li><a href="data_juicer.analysis.html#data_juicer.analysis.DiversityAnalysis.analyze">analyze() （data_juicer.analysis.DiversityAnalysis 方法）</a>
@@ -1221,6 +1247,12 @@
         <li><a href="data_juicer.analysis.html#data_juicer.analysis.overall_analysis.OverallAnalysis.analyze">analyze() （data_juicer.analysis.overall_analysis.OverallAnalysis 方法）</a>
 </li>
         <li><a href="data_juicer.analysis.html#data_juicer.analysis.OverallAnalysis.analyze">analyze() （data_juicer.analysis.OverallAnalysis 方法）</a>
+</li>
+        <li><a href="data_juicer.tools.html#data_juicer.tools.op_search.analyze_modality_tag">analyze_modality_tag()（在 data_juicer.tools.op_search 模块中）</a>
+</li>
+        <li><a href="data_juicer.tools.html#data_juicer.tools.op_search.analyze_model_tags">analyze_model_tags()（在 data_juicer.tools.op_search 模块中）</a>
+</li>
+        <li><a href="data_juicer.tools.html#data_juicer.tools.op_search.analyze_resource_tag">analyze_resource_tag()（在 data_juicer.tools.op_search 模块中）</a>
 </li>
         <li><a href="data_juicer.core.html#data_juicer.core.Monitor.analyze_resource_util_list">analyze_resource_util_list()（data_juicer.core.Monitor 静态方法）</a>
 </li>
@@ -1232,15 +1264,19 @@
 </li>
         <li><a href="data_juicer.core.html#data_juicer.core.Adapter.analyze_small_batch">analyze_small_batch() （data_juicer.core.Adapter 方法）</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="data_juicer.core.html#data_juicer.core.adapter.Adapter.analyze_small_batch">analyze_small_batch() （data_juicer.core.adapter.Adapter 方法）</a>
+</li>
+        <li><a href="data_juicer.tools.html#data_juicer.tools.op_search.analyze_tag_from_cls">analyze_tag_from_cls()（在 data_juicer.tools.op_search 模块中）</a>
+</li>
+        <li><a href="data_juicer.tools.html#data_juicer.tools.op_search.analyze_tag_with_inheritance">analyze_tag_with_inheritance()（在 data_juicer.tools.op_search 模块中）</a>
 </li>
         <li><a href="data_juicer.core.html#data_juicer.core.Analyzer">Analyzer（data_juicer.core 中的类）</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="data_juicer.core.html#data_juicer.core.analyzer.Analyzer">Analyzer（data_juicer.core.analyzer 中的类）</a>
 </li>
-        <li><a href="data_juicer.utils.html#data_juicer.utils.model_utils.APIModel">APIModel（data_juicer.utils.model_utils 中的类）</a>
+        <li><a href="data_juicer.analysis.html#data_juicer.analysis.correlation_analysis.annotate_heatmap">annotate_heatmap()（在 data_juicer.analysis.correlation_analysis 模块中）</a>
 </li>
         <li><a href="data_juicer.utils.html#data_juicer.utils.constant.StatsKeysConstant.aspect_ratios">aspect_ratios（data_juicer.utils.constant.StatsKeysConstant 属性）</a>
 </li>
@@ -1322,6 +1358,10 @@
 </li>
         <li><a href="data_juicer.ops.deduplicator.html#data_juicer.ops.deduplicator.ray_bts_minhash_deduplicator.BTSUnionFind.balanced_union_find">balanced_union_find() （data_juicer.ops.deduplicator.ray_bts_minhash_deduplicator.BTSUnionFind 方法）</a>
 </li>
+        <li><a href="data_juicer.ops.deduplicator.html#data_juicer.ops.deduplicator.ray_bts_minhash_deduplicator.RayBTSMinhashDeduplicator.band_minhash">band_minhash() （data_juicer.ops.deduplicator.ray_bts_minhash_deduplicator.RayBTSMinhashDeduplicator 方法）</a>
+</li>
+        <li><a href="data_juicer.ops.deduplicator.html#data_juicer.ops.deduplicator.RayBTSMinhashDeduplicator.band_minhash">band_minhash() （data_juicer.ops.deduplicator.RayBTSMinhashDeduplicator 方法）</a>
+</li>
         <li><a href="data_juicer.ops.mapper.annotation.html#data_juicer.ops.mapper.annotation.annotation_mapper.BaseAnnotationMapper">BaseAnnotationMapper（data_juicer.ops.mapper.annotation.annotation_mapper 中的类）</a>
 </li>
         <li><a href="data_juicer.utils.html#data_juicer.utils.compress.BaseCompressor">BaseCompressor（data_juicer.utils.compress 中的类）</a>
@@ -1346,15 +1386,11 @@
 </li>
         <li><a href="data_juicer.ops.deduplicator.html#data_juicer.ops.deduplicator.ray_bts_minhash_deduplicator.BTSUnionFind">BTSUnionFind（data_juicer.ops.deduplicator.ray_bts_minhash_deduplicator 中的类）</a>
 </li>
-        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.llm_difficulty_score_filter.LLMDifficultyScoreFilter.build_input">build_input() （data_juicer.ops.filter.llm_difficulty_score_filter.LLMDifficultyScoreFilter 方法）</a>
-</li>
-        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.llm_quality_score_filter.LLMQualityScoreFilter.build_input">build_input() （data_juicer.ops.filter.llm_quality_score_filter.LLMQualityScoreFilter 方法）</a>
-</li>
-        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.LLMDifficultyScoreFilter.build_input">build_input() （data_juicer.ops.filter.LLMDifficultyScoreFilter 方法）</a>
+        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.llm_analysis_filter.LLMAnalysisFilter.build_input">build_input() （data_juicer.ops.filter.llm_analysis_filter.LLMAnalysisFilter 方法）</a>
 </li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.LLMQualityScoreFilter.build_input">build_input() （data_juicer.ops.filter.LLMQualityScoreFilter 方法）</a>
+        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.LLMAnalysisFilter.build_input">build_input() （data_juicer.ops.filter.LLMAnalysisFilter 方法）</a>
 </li>
         <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.calibrate_qa_mapper.CalibrateQAMapper.build_input">build_input() （data_juicer.ops.mapper.calibrate_qa_mapper.CalibrateQAMapper 方法）</a>
 </li>
@@ -1447,6 +1483,8 @@
         <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.CharacterRepetitionFilter">CharacterRepetitionFilter（data_juicer.ops.filter 中的类）</a>
 </li>
         <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.character_repetition_filter.CharacterRepetitionFilter">CharacterRepetitionFilter（data_juicer.ops.filter.character_repetition_filter 中的类）</a>
+</li>
+        <li><a href="data_juicer.utils.html#data_juicer.utils.model_utils.ChatAPIModel">ChatAPIModel（data_juicer.utils.model_utils 中的类）</a>
 </li>
         <li><a href="data_juicer.utils.html#data_juicer.utils.ckpt_utils.CheckpointManager.check_ckpt">check_ckpt() （data_juicer.utils.ckpt_utils.CheckpointManager 方法）</a>
 </li>
@@ -1576,6 +1614,8 @@
 </li>
         <li><a href="data_juicer.ops.deduplicator.html#data_juicer.ops.deduplicator.VideoDeduplicator.compute_hash">compute_hash() （data_juicer.ops.deduplicator.VideoDeduplicator 方法）</a>
 </li>
+        <li><a href="data_juicer.ops.deduplicator.html#data_juicer.ops.deduplicator.ray_bts_minhash_deduplicator.GPUMinHashActor.compute_minhash">compute_minhash() （data_juicer.ops.deduplicator.ray_bts_minhash_deduplicator.GPUMinHashActor 方法）</a>
+</li>
         <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.audio_nmf_snr_filter.compute_nmf_snr">compute_nmf_snr()（在 data_juicer.ops.filter.audio_nmf_snr_filter 模块中）</a>
 </li>
         <li><a href="data_juicer.ops.html#data_juicer.ops.base_op.Filter.compute_stats_batched">compute_stats_batched() （data_juicer.ops.base_op.Filter 方法）</a>
@@ -1618,14 +1658,14 @@
 </li>
         <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.TextLengthFilter.compute_stats_batched">compute_stats_batched() （data_juicer.ops.filter.TextLengthFilter 方法）</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.word_repetition_filter.WordRepetitionFilter.compute_stats_batched">compute_stats_batched() （data_juicer.ops.filter.word_repetition_filter.WordRepetitionFilter 方法）</a>
 </li>
         <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.WordRepetitionFilter.compute_stats_batched">compute_stats_batched() （data_juicer.ops.filter.WordRepetitionFilter 方法）</a>
 </li>
         <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.words_num_filter.WordsNumFilter.compute_stats_batched">compute_stats_batched() （data_juicer.ops.filter.words_num_filter.WordsNumFilter 方法）</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.WordsNumFilter.compute_stats_batched">compute_stats_batched() （data_juicer.ops.filter.WordsNumFilter 方法）</a>
 </li>
         <li><a href="data_juicer.ops.html#data_juicer.ops.op_fusion.FusedFilter.compute_stats_batched">compute_stats_batched() （data_juicer.ops.op_fusion.FusedFilter 方法）</a>
@@ -1698,9 +1738,13 @@
 </li>
         <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.LanguageIDScoreFilter.compute_stats_single">compute_stats_single() （data_juicer.ops.filter.LanguageIDScoreFilter 方法）</a>
 </li>
+        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.llm_analysis_filter.LLMAnalysisFilter.compute_stats_single">compute_stats_single() （data_juicer.ops.filter.llm_analysis_filter.LLMAnalysisFilter 方法）</a>
+</li>
         <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.llm_difficulty_score_filter.LLMDifficultyScoreFilter.compute_stats_single">compute_stats_single() （data_juicer.ops.filter.llm_difficulty_score_filter.LLMDifficultyScoreFilter 方法）</a>
 </li>
         <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.llm_quality_score_filter.LLMQualityScoreFilter.compute_stats_single">compute_stats_single() （data_juicer.ops.filter.llm_quality_score_filter.LLMQualityScoreFilter 方法）</a>
+</li>
+        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.LLMAnalysisFilter.compute_stats_single">compute_stats_single() （data_juicer.ops.filter.LLMAnalysisFilter 方法）</a>
 </li>
         <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.LLMDifficultyScoreFilter.compute_stats_single">compute_stats_single() （data_juicer.ops.filter.LLMDifficultyScoreFilter 方法）</a>
 </li>
@@ -1804,6 +1848,10 @@
 </li>
         <li><a href="data_juicer.core.data.html#data_juicer.core.data.config_validator.ConfigValidator">ConfigValidator（data_juicer.core.data.config_validator 中的类）</a>
 </li>
+        <li><a href="data_juicer.core.data.html#data_juicer.core.data.dj_dataset.DJDataset.contain_column">contain_column() （data_juicer.core.data.dj_dataset.DJDataset 方法）</a>
+</li>
+        <li><a href="data_juicer.core.data.html#data_juicer.core.data.DJDataset.contain_column">contain_column() （data_juicer.core.data.DJDataset 方法）</a>
+</li>
         <li><a href="data_juicer.utils.html#data_juicer.utils.constant.Fields.context">context（data_juicer.utils.constant.Fields 属性）</a>
 </li>
         <li><a href="data_juicer.ops.html#data_juicer.ops.base_op.convert_arrow_to_python">convert_arrow_to_python()（在 data_juicer.ops.base_op 模块中）</a>
@@ -1816,6 +1864,10 @@
 </li>
         <li><a href="data_juicer.utils.html#data_juicer.utils.file_utils.copy_data">copy_data()（在 data_juicer.utils.file_utils 模块中）</a>
 </li>
+        <li><a href="data_juicer.analysis.html#data_juicer.analysis.CorrelationAnalysis">CorrelationAnalysis（data_juicer.analysis 中的类）</a>
+</li>
+        <li><a href="data_juicer.analysis.html#data_juicer.analysis.correlation_analysis.CorrelationAnalysis">CorrelationAnalysis（data_juicer.analysis.correlation_analysis 中的类）</a>
+</li>
         <li><a href="data_juicer.ops.common.html#data_juicer.ops.common.prompt2prompt_pipeline.create_controller">create_controller()（在 data_juicer.ops.common.prompt2prompt_pipeline 模块中）</a>
 </li>
         <li><a href="data_juicer.utils.html#data_juicer.utils.file_utils.create_directory_if_not_exists">create_directory_if_not_exists()（在 data_juicer.utils.file_utils 模块中）</a>
@@ -1825,6 +1877,12 @@
         <li><a href="data_juicer.core.executor.html#data_juicer.core.executor.factory.ExecutorFactory.create_executor">create_executor()（data_juicer.core.executor.factory.ExecutorFactory 静态方法）</a>
 </li>
         <li><a href="data_juicer.core.html#data_juicer.core.ExecutorFactory.create_executor">create_executor()（data_juicer.core.ExecutorFactory 静态方法）</a>
+</li>
+        <li><a href="data_juicer.tools.html#data_juicer.tools.DJ_mcp_granular_ops.create_mcp_server">create_mcp_server()（在 data_juicer.tools.DJ_mcp_granular_ops 模块中）</a>
+</li>
+        <li><a href="data_juicer.tools.html#data_juicer.tools.DJ_mcp_recipe_flow.create_mcp_server">create_mcp_server()（在 data_juicer.tools.DJ_mcp_recipe_flow 模块中）</a>
+</li>
+        <li><a href="data_juicer.tools.html#data_juicer.tools.DJ_mcp_granular_ops.create_operator_function">create_operator_function()（在 data_juicer.tools.DJ_mcp_granular_ops 模块中）</a>
 </li>
         <li><a href="data_juicer.utils.html#data_juicer.utils.nltk_utils.create_physical_resource_alias">create_physical_resource_alias()（在 data_juicer.utils.nltk_utils 模块中）</a>
 </li>
@@ -1879,17 +1937,17 @@
 </li>
         </ul></li>
         <li>
+    data_juicer.analysis.correlation_analysis
+
+        <ul>
+          <li><a href="data_juicer.analysis.html#module-data_juicer.analysis.correlation_analysis">module</a>
+</li>
+        </ul></li>
+        <li>
     data_juicer.analysis.diversity_analysis
 
         <ul>
           <li><a href="data_juicer.analysis.html#module-data_juicer.analysis.diversity_analysis">module</a>
-</li>
-        </ul></li>
-        <li>
-    data_juicer.analysis.draw
-
-        <ul>
-          <li><a href="data_juicer.analysis.html#module-data_juicer.analysis.draw">module</a>
 </li>
         </ul></li>
         <li>
@@ -2044,6 +2102,13 @@
 
         <ul>
           <li><a href="data_juicer.core.html#module-data_juicer.core.monitor">module</a>
+</li>
+        </ul></li>
+        <li>
+    data_juicer.core.ray_exporter
+
+        <ul>
+          <li><a href="data_juicer.core.html#module-data_juicer.core.ray_exporter">module</a>
 </li>
         </ul></li>
         <li>
@@ -2446,6 +2511,13 @@
 </li>
         </ul></li>
         <li>
+    data_juicer.ops.filter.llm_analysis_filter
+
+        <ul>
+          <li><a href="data_juicer.ops.filter.html#module-data_juicer.ops.filter.llm_analysis_filter">module</a>
+</li>
+        </ul></li>
+        <li>
     data_juicer.ops.filter.llm_difficulty_score_filter
 
         <ul>
@@ -2810,6 +2882,13 @@
 </li>
         </ul></li>
         <li>
+    data_juicer.ops.mapper.download_file_mapper
+
+        <ul>
+          <li><a href="data_juicer.ops.mapper.html#module-data_juicer.ops.mapper.download_file_mapper">module</a>
+</li>
+        </ul></li>
+        <li>
     data_juicer.ops.mapper.expand_macro_mapper
 
         <ul>
@@ -3159,8 +3238,6 @@
           <li><a href="data_juicer.ops.mapper.html#module-data_juicer.ops.mapper.video_captioning_from_audio_mapper">module</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li>
     data_juicer.ops.mapper.video_captioning_from_frames_mapper
 
@@ -3182,6 +3259,8 @@
           <li><a href="data_juicer.ops.mapper.html#module-data_juicer.ops.mapper.video_captioning_from_video_mapper">module</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li>
     data_juicer.ops.mapper.video_extract_frames_mapper
 
@@ -3327,6 +3406,34 @@
 
         <ul>
           <li><a href="data_juicer.tools.html#module-data_juicer.tools">module</a>
+</li>
+        </ul></li>
+        <li>
+    data_juicer.tools.DJ_mcp_granular_ops
+
+        <ul>
+          <li><a href="data_juicer.tools.html#module-data_juicer.tools.DJ_mcp_granular_ops">module</a>
+</li>
+        </ul></li>
+        <li>
+    data_juicer.tools.DJ_mcp_recipe_flow
+
+        <ul>
+          <li><a href="data_juicer.tools.html#module-data_juicer.tools.DJ_mcp_recipe_flow">module</a>
+</li>
+        </ul></li>
+        <li>
+    data_juicer.tools.mcp_tool
+
+        <ul>
+          <li><a href="data_juicer.tools.html#module-data_juicer.tools.mcp_tool">module</a>
+</li>
+        </ul></li>
+        <li>
+    data_juicer.tools.op_search
+
+        <ul>
+          <li><a href="data_juicer.tools.html#module-data_juicer.tools.op_search">module</a>
 </li>
         </ul></li>
         <li>
@@ -3569,6 +3676,18 @@
 </li>
         <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.ExtractEntityAttributeMapper.DEFAULT_DEMON_PATTERN">DEFAULT_DEMON_PATTERN（data_juicer.ops.mapper.ExtractEntityAttributeMapper 属性）</a>
 </li>
+        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.llm_analysis_filter.LLMAnalysisFilter.DEFAULT_DIM_REQUIRED_KEYS">DEFAULT_DIM_REQUIRED_KEYS（data_juicer.ops.filter.llm_analysis_filter.LLMAnalysisFilter 属性）</a>
+</li>
+        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.llm_difficulty_score_filter.LLMDifficultyScoreFilter.DEFAULT_DIM_REQUIRED_KEYS">DEFAULT_DIM_REQUIRED_KEYS（data_juicer.ops.filter.llm_difficulty_score_filter.LLMDifficultyScoreFilter 属性）</a>
+</li>
+        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.llm_quality_score_filter.LLMQualityScoreFilter.DEFAULT_DIM_REQUIRED_KEYS">DEFAULT_DIM_REQUIRED_KEYS（data_juicer.ops.filter.llm_quality_score_filter.LLMQualityScoreFilter 属性）</a>
+</li>
+        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.LLMAnalysisFilter.DEFAULT_DIM_REQUIRED_KEYS">DEFAULT_DIM_REQUIRED_KEYS（data_juicer.ops.filter.LLMAnalysisFilter 属性）</a>
+</li>
+        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.LLMDifficultyScoreFilter.DEFAULT_DIM_REQUIRED_KEYS">DEFAULT_DIM_REQUIRED_KEYS（data_juicer.ops.filter.LLMDifficultyScoreFilter 属性）</a>
+</li>
+        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.LLMQualityScoreFilter.DEFAULT_DIM_REQUIRED_KEYS">DEFAULT_DIM_REQUIRED_KEYS（data_juicer.ops.filter.LLMQualityScoreFilter 属性）</a>
+</li>
         <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.extract_entity_relation_mapper.ExtractEntityRelationMapper.DEFAULT_ENTITY_PATTERN">DEFAULT_ENTITY_PATTERN（data_juicer.ops.mapper.extract_entity_relation_mapper.ExtractEntityRelationMapper 属性）</a>
 </li>
         <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.ExtractEntityRelationMapper.DEFAULT_ENTITY_PATTERN">DEFAULT_ENTITY_PATTERN（data_juicer.ops.mapper.ExtractEntityRelationMapper 属性）</a>
@@ -3585,13 +3704,9 @@
 </li>
         <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.GenerateQAFromExamplesMapper.DEFAULT_EXAMPLE_TEMPLATE">DEFAULT_EXAMPLE_TEMPLATE（data_juicer.ops.mapper.GenerateQAFromExamplesMapper 属性）</a>
 </li>
-        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.llm_difficulty_score_filter.LLMDifficultyScoreFilter.DEFAULT_FIELD_TEMPLATE">DEFAULT_FIELD_TEMPLATE（data_juicer.ops.filter.llm_difficulty_score_filter.LLMDifficultyScoreFilter 属性）</a>
+        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.llm_analysis_filter.LLMAnalysisFilter.DEFAULT_FIELD_TEMPLATE">DEFAULT_FIELD_TEMPLATE（data_juicer.ops.filter.llm_analysis_filter.LLMAnalysisFilter 属性）</a>
 </li>
-        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.llm_quality_score_filter.LLMQualityScoreFilter.DEFAULT_FIELD_TEMPLATE">DEFAULT_FIELD_TEMPLATE（data_juicer.ops.filter.llm_quality_score_filter.LLMQualityScoreFilter 属性）</a>
-</li>
-        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.LLMDifficultyScoreFilter.DEFAULT_FIELD_TEMPLATE">DEFAULT_FIELD_TEMPLATE（data_juicer.ops.filter.LLMDifficultyScoreFilter 属性）</a>
-</li>
-        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.LLMQualityScoreFilter.DEFAULT_FIELD_TEMPLATE">DEFAULT_FIELD_TEMPLATE（data_juicer.ops.filter.LLMQualityScoreFilter 属性）</a>
+        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.LLMAnalysisFilter.DEFAULT_FIELD_TEMPLATE">DEFAULT_FIELD_TEMPLATE（data_juicer.ops.filter.LLMAnalysisFilter 属性）</a>
 </li>
         <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.extract_entity_relation_mapper.ExtractEntityRelationMapper.DEFAULT_IF_LOOP_PROMPT">DEFAULT_IF_LOOP_PROMPT（data_juicer.ops.mapper.extract_entity_relation_mapper.ExtractEntityRelationMapper 属性）</a>
 </li>
@@ -3613,13 +3728,9 @@
 </li>
         <li><a href="data_juicer.ops.aggregator.html#data_juicer.ops.aggregator.NestedAggregator.DEFAULT_INPUT_TEMPLATE">DEFAULT_INPUT_TEMPLATE（data_juicer.ops.aggregator.NestedAggregator 属性）</a>
 </li>
-        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.llm_difficulty_score_filter.LLMDifficultyScoreFilter.DEFAULT_INPUT_TEMPLATE">DEFAULT_INPUT_TEMPLATE（data_juicer.ops.filter.llm_difficulty_score_filter.LLMDifficultyScoreFilter 属性）</a>
+        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.llm_analysis_filter.LLMAnalysisFilter.DEFAULT_INPUT_TEMPLATE">DEFAULT_INPUT_TEMPLATE（data_juicer.ops.filter.llm_analysis_filter.LLMAnalysisFilter 属性）</a>
 </li>
-        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.llm_quality_score_filter.LLMQualityScoreFilter.DEFAULT_INPUT_TEMPLATE">DEFAULT_INPUT_TEMPLATE（data_juicer.ops.filter.llm_quality_score_filter.LLMQualityScoreFilter 属性）</a>
-</li>
-        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.LLMDifficultyScoreFilter.DEFAULT_INPUT_TEMPLATE">DEFAULT_INPUT_TEMPLATE（data_juicer.ops.filter.LLMDifficultyScoreFilter 属性）</a>
-</li>
-        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.LLMQualityScoreFilter.DEFAULT_INPUT_TEMPLATE">DEFAULT_INPUT_TEMPLATE（data_juicer.ops.filter.LLMQualityScoreFilter 属性）</a>
+        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.LLMAnalysisFilter.DEFAULT_INPUT_TEMPLATE">DEFAULT_INPUT_TEMPLATE（data_juicer.ops.filter.LLMAnalysisFilter 属性）</a>
 </li>
         <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.calibrate_qa_mapper.CalibrateQAMapper.DEFAULT_INPUT_TEMPLATE">DEFAULT_INPUT_TEMPLATE（data_juicer.ops.mapper.calibrate_qa_mapper.CalibrateQAMapper 属性）</a>
 </li>
@@ -3821,9 +3932,13 @@
 </li>
         <li><a href="data_juicer.ops.aggregator.html#data_juicer.ops.aggregator.NestedAggregator.DEFAULT_SYSTEM_PROMPT">DEFAULT_SYSTEM_PROMPT（data_juicer.ops.aggregator.NestedAggregator 属性）</a>
 </li>
+        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.llm_analysis_filter.LLMAnalysisFilter.DEFAULT_SYSTEM_PROMPT">DEFAULT_SYSTEM_PROMPT（data_juicer.ops.filter.llm_analysis_filter.LLMAnalysisFilter 属性）</a>
+</li>
         <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.llm_difficulty_score_filter.LLMDifficultyScoreFilter.DEFAULT_SYSTEM_PROMPT">DEFAULT_SYSTEM_PROMPT（data_juicer.ops.filter.llm_difficulty_score_filter.LLMDifficultyScoreFilter 属性）</a>
 </li>
         <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.llm_quality_score_filter.LLMQualityScoreFilter.DEFAULT_SYSTEM_PROMPT">DEFAULT_SYSTEM_PROMPT（data_juicer.ops.filter.llm_quality_score_filter.LLMQualityScoreFilter 属性）</a>
+</li>
+        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.LLMAnalysisFilter.DEFAULT_SYSTEM_PROMPT">DEFAULT_SYSTEM_PROMPT（data_juicer.ops.filter.LLMAnalysisFilter 属性）</a>
 </li>
         <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.LLMDifficultyScoreFilter.DEFAULT_SYSTEM_PROMPT">DEFAULT_SYSTEM_PROMPT（data_juicer.ops.filter.LLMDifficultyScoreFilter 属性）</a>
 </li>
@@ -3969,6 +4084,8 @@
 </li>
         <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.imgdiff_difference_area_generator_mapper.Difference_Area_Generator_Mapper">Difference_Area_Generator_Mapper（data_juicer.ops.mapper.imgdiff_difference_area_generator_mapper 中的类）</a>
 </li>
+        <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.Difference_Caption_Generator_Mapper">Difference_Caption_Generator_Mapper（data_juicer.ops.mapper 中的类）</a>
+</li>
         <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.imgdiff_difference_caption_generator_mapper.Difference_Caption_Generator_Mapper">Difference_Caption_Generator_Mapper（data_juicer.ops.mapper.imgdiff_difference_caption_generator_mapper 中的类）</a>
 </li>
         <li><a href="data_juicer.utils.html#data_juicer.utils.fingerprint_utils.Hasher.dispatch">dispatch（data_juicer.utils.fingerprint_utils.Hasher 属性）</a>
@@ -4011,13 +4128,27 @@
 </li>
         <li><a href="data_juicer.download.html#data_juicer.download.downloader.download_and_extract">download_and_extract()（在 data_juicer.download.downloader 模块中）</a>
 </li>
+        <li><a href="data_juicer.utils.html#data_juicer.utils.file_utils.download_file">download_file()（在 data_juicer.utils.file_utils 模块中）</a>
+</li>
+        <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.download_file_mapper.DownloadFileMapper.download_files_async">download_files_async() （data_juicer.ops.mapper.download_file_mapper.DownloadFileMapper 方法）</a>
+</li>
+        <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.DownloadFileMapper.download_files_async">download_files_async() （data_juicer.ops.mapper.DownloadFileMapper 方法）</a>
+</li>
+        <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.download_file_mapper.DownloadFileMapper.download_nested_urls">download_nested_urls() （data_juicer.ops.mapper.download_file_mapper.DownloadFileMapper 方法）</a>
+</li>
+        <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.DownloadFileMapper.download_nested_urls">download_nested_urls() （data_juicer.ops.mapper.DownloadFileMapper 方法）</a>
+</li>
         <li><a href="data_juicer.download.html#data_juicer.download.wikipedia.download_wikipedia">download_wikipedia()（在 data_juicer.download.wikipedia 模块中）</a>
+</li>
+        <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.DownloadFileMapper">DownloadFileMapper（data_juicer.ops.mapper 中的类）</a>
+</li>
+        <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.download_file_mapper.DownloadFileMapper">DownloadFileMapper（data_juicer.ops.mapper.download_file_mapper 中的类）</a>
 </li>
         <li><a href="data_juicer.analysis.html#data_juicer.analysis.column_wise_analysis.ColumnWiseAnalysis.draw_box">draw_box() （data_juicer.analysis.column_wise_analysis.ColumnWiseAnalysis 方法）</a>
 </li>
         <li><a href="data_juicer.analysis.html#data_juicer.analysis.ColumnWiseAnalysis.draw_box">draw_box() （data_juicer.analysis.ColumnWiseAnalysis 方法）</a>
 </li>
-        <li><a href="data_juicer.analysis.html#data_juicer.analysis.draw.draw_heatmap">draw_heatmap()（在 data_juicer.analysis.draw 模块中）</a>
+        <li><a href="data_juicer.analysis.html#data_juicer.analysis.correlation_analysis.draw_heatmap">draw_heatmap()（在 data_juicer.analysis.correlation_analysis 模块中）</a>
 </li>
         <li><a href="data_juicer.analysis.html#data_juicer.analysis.column_wise_analysis.ColumnWiseAnalysis.draw_hist">draw_hist() （data_juicer.analysis.column_wise_analysis.ColumnWiseAnalysis 方法）</a>
 </li>
@@ -4048,6 +4179,8 @@
         <li><a href="data_juicer.ops.deduplicator.html#data_juicer.ops.deduplicator.ray_bts_minhash_deduplicator.BTSUnionFind.edge_redistribution">edge_redistribution() （data_juicer.ops.deduplicator.ray_bts_minhash_deduplicator.BTSUnionFind 方法）</a>
 </li>
         <li><a href="data_juicer.ops.deduplicator.html#data_juicer.ops.deduplicator.ray_bts_minhash_deduplicator.EdgeBuffer">EdgeBuffer（data_juicer.ops.deduplicator.ray_bts_minhash_deduplicator 中的类）</a>
+</li>
+        <li><a href="data_juicer.utils.html#data_juicer.utils.model_utils.EmbeddingAPIModel">EmbeddingAPIModel（data_juicer.utils.model_utils 中的类）</a>
 </li>
         <li><a href="data_juicer.ops.deduplicator.html#data_juicer.ops.deduplicator.ray_basic_deduplicator.RayBasicDeduplicator.EMPTY_HASH_VALUE">EMPTY_HASH_VALUE（data_juicer.ops.deduplicator.ray_basic_deduplicator.RayBasicDeduplicator 属性）</a>
 </li>
@@ -4093,6 +4226,8 @@
 </li>
         <li><a href="data_juicer.core.html#data_juicer.core.adapter.Adapter.execute_and_probe">execute_and_probe()（data_juicer.core.adapter.Adapter 静态方法）</a>
 </li>
+        <li><a href="data_juicer.tools.html#data_juicer.tools.mcp_tool.execute_op">execute_op()（在 data_juicer.tools.mcp_tool 模块中）</a>
+</li>
         <li><a href="data_juicer.core.data.html#data_juicer.core.data.load_strategy.StrategyKey.executor_type">executor_type（data_juicer.core.data.load_strategy.StrategyKey 属性）</a>
 </li>
         <li><a href="data_juicer.core.html#data_juicer.core.ExecutorBase">ExecutorBase（data_juicer.core 中的类）</a>
@@ -4109,6 +4244,8 @@
 </li>
         <li><a href="data_juicer.utils.html#data_juicer.utils.file_utils.expand_outdir_and_mkdir">expand_outdir_and_mkdir()（在 data_juicer.utils.file_utils 模块中）</a>
 </li>
+        <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.ExpandMacroMapper">ExpandMacroMapper（data_juicer.ops.mapper 中的类）</a>
+</li>
         <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.expand_macro_mapper.ExpandMacroMapper">ExpandMacroMapper（data_juicer.ops.mapper.expand_macro_mapper 中的类）</a>
 </li>
         <li><a href="data_juicer.core.html#data_juicer.core.Exporter.export">export() （data_juicer.core.Exporter 方法）</a>
@@ -4116,6 +4253,10 @@
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="data_juicer.core.html#data_juicer.core.exporter.Exporter.export">export() （data_juicer.core.exporter.Exporter 方法）</a>
+</li>
+        <li><a href="data_juicer.core.html#data_juicer.core.ray_exporter.RayExporter.export">export() （data_juicer.core.ray_exporter.RayExporter 方法）</a>
+</li>
+        <li><a href="data_juicer.core.html#data_juicer.core.RayExporter.export">export() （data_juicer.core.RayExporter 方法）</a>
 </li>
         <li><a href="data_juicer.core.html#data_juicer.core.Exporter.export_compute_stats">export_compute_stats() （data_juicer.core.Exporter 方法）</a>
 </li>
@@ -4144,6 +4285,8 @@
         <li><a href="data_juicer.utils.html#data_juicer.utils.mm_utils.extract_key_frames">extract_key_frames()（在 data_juicer.utils.mm_utils 模块中）</a>
 </li>
         <li><a href="data_juicer.utils.html#data_juicer.utils.mm_utils.extract_key_frames_by_seconds">extract_key_frames_by_seconds()（在 data_juicer.utils.mm_utils 模块中）</a>
+</li>
+        <li><a href="data_juicer.tools.html#data_juicer.tools.op_search.extract_param_docstring">extract_param_docstring()（在 data_juicer.tools.op_search 模块中）</a>
 </li>
         <li><a href="data_juicer.format.html#data_juicer.format.text_formatter.extract_txt_from_docx">extract_txt_from_docx()（在 data_juicer.format.text_formatter 模块中）</a>
 </li>
@@ -4209,6 +4352,8 @@
 </li>
         <li><a href="data_juicer.core.html#data_juicer.core.NestedDataset.filter">filter() （data_juicer.core.NestedDataset 方法）</a>
 </li>
+        <li><a href="data_juicer.utils.html#data_juicer.utils.model_utils.filter_arguments">filter_arguments()（在 data_juicer.utils.model_utils 模块中）</a>
+</li>
         <li><a href="data_juicer.core.data.html#data_juicer.core.data.ray_dataset.filter_batch">filter_batch()（在 data_juicer.core.data.ray_dataset 模块中）</a>
 </li>
         <li><a href="data_juicer.ops.deduplicator.html#data_juicer.ops.deduplicator.ray_bts_minhash_deduplicator.RayBTSMinhashDeduplicator.filter_with_union_find">filter_with_union_find() （data_juicer.ops.deduplicator.ray_bts_minhash_deduplicator.RayBTSMinhashDeduplicator 方法）</a>
@@ -4233,10 +4378,10 @@
 </li>
         <li><a href="data_juicer.analysis.html#data_juicer.analysis.diversity_analysis.find_root_verb_and_its_dobj_in_string">find_root_verb_and_its_dobj_in_string()（在 data_juicer.analysis.diversity_analysis 模块中）</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.FixUnicodeMapper">FixUnicodeMapper（data_juicer.ops.mapper 中的类）</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.fix_unicode_mapper.FixUnicodeMapper">FixUnicodeMapper（data_juicer.ops.mapper.fix_unicode_mapper 中的类）</a>
 </li>
         <li><a href="data_juicer.utils.html#data_juicer.utils.constant.StatsKeysConstant.flagged_words_ratio">flagged_words_ratio（data_juicer.utils.constant.StatsKeysConstant 属性）</a>
@@ -4273,6 +4418,10 @@
 </li>
         <li><a href="data_juicer.core.html#data_juicer.core.NestedDataset.from_dict">from_dict()（data_juicer.core.NestedDataset 类方法）</a>
 </li>
+        <li><a href="data_juicer.core.data.html#data_juicer.core.data.schema.Schema.from_hf_features">from_hf_features()（data_juicer.core.data.schema.Schema 类方法）</a>
+</li>
+        <li><a href="data_juicer.core.data.html#data_juicer.core.data.schema.Schema.from_ray_schema">from_ray_schema()（data_juicer.core.data.schema.Schema 类方法）</a>
+</li>
         <li><a href="data_juicer.ops.html#data_juicer.ops.op_fusion.fuse_filter_group">fuse_filter_group()（在 data_juicer.ops.op_fusion 模块中）</a>
 </li>
         <li><a href="data_juicer.ops.html#data_juicer.ops.op_fusion.fuse_operators">fuse_operators()（在 data_juicer.ops.op_fusion 模块中）</a>
@@ -4298,6 +4447,10 @@
         <li><a href="data_juicer.utils.html#data_juicer.utils.unittest_utils.DataJuicerTestCaseBase.generate_dataset">generate_dataset() （data_juicer.utils.unittest_utils.DataJuicerTestCaseBase 方法）</a>
 </li>
         <li><a href="data_juicer.utils.html#data_juicer.utils.fingerprint_utils.generate_fingerprint">generate_fingerprint()（在 data_juicer.utils.fingerprint_utils 模块中）</a>
+</li>
+        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.llm_analysis_filter.LLMAnalysisFilter.generate_llm_analysis">generate_llm_analysis() （data_juicer.ops.filter.llm_analysis_filter.LLMAnalysisFilter 方法）</a>
+</li>
+        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.LLMAnalysisFilter.generate_llm_analysis">generate_llm_analysis() （data_juicer.ops.filter.LLMAnalysisFilter 方法）</a>
 </li>
         <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.GenerateQAFromExamplesMapper">GenerateQAFromExamplesMapper（data_juicer.ops.mapper 中的类）</a>
 </li>
@@ -4359,6 +4512,8 @@
 </li>
         <li><a href="data_juicer.utils.html#data_juicer.utils.resource_utils.get_cpu_utilization">get_cpu_utilization()（在 data_juicer.utils.resource_utils 模块中）</a>
 </li>
+        <li><a href="data_juicer.tools.html#data_juicer.tools.DJ_mcp_recipe_flow.get_data_processing_ops">get_data_processing_ops()（在 data_juicer.tools.DJ_mcp_recipe_flow 模块中）</a>
+</li>
         <li><a href="data_juicer.utils.html#data_juicer.utils.mm_utils.get_decoded_frames_from_video">get_decoded_frames_from_video()（在 data_juicer.utils.mm_utils 模块中）</a>
 </li>
         <li><a href="data_juicer.config.html#data_juicer.config.get_default_cfg">get_default_cfg()（在 data_juicer.config 模块中）</a>
@@ -4408,6 +4563,10 @@
         <li><a href="data_juicer.utils.html#data_juicer.utils.lazy_loader.LazyLoader.get_package_name">get_package_name()（data_juicer.utils.lazy_loader.LazyLoader 类方法）</a>
 </li>
         <li><a href="data_juicer.utils.html#data_juicer.utils.unittest_utils.get_partial_test_cases">get_partial_test_cases()（在 data_juicer.utils.unittest_utils 模块中）</a>
+</li>
+        <li><a href="data_juicer.utils.html#data_juicer.utils.resource_utils.get_ray_gpu_count">get_ray_gpu_count()（在 data_juicer.utils.resource_utils 模块中）</a>
+</li>
+        <li><a href="data_juicer.utils.html#data_juicer.utils.resource_utils.get_ray_gpu_memory">get_ray_gpu_memory()（在 data_juicer.utils.resource_utils 模块中）</a>
 </li>
         <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.video_ocr_area_ratio_filter.VideoOcrAreaRatioFilter.get_reader">get_reader() （data_juicer.ops.filter.video_ocr_area_ratio_filter.VideoOcrAreaRatioFilter 方法）</a>
 </li>
@@ -4470,6 +4629,8 @@
         <li><a href="data_juicer.core.html#data_juicer.core.exporter.Exporter.GiB">GiB（data_juicer.core.exporter.Exporter 属性）</a>
 </li>
         <li><a href="data_juicer.ops.common.html#data_juicer.ops.common.prompt2prompt_pipeline.global_align">global_align()（在 data_juicer.ops.common.prompt2prompt_pipeline 模块中）</a>
+</li>
+        <li><a href="data_juicer.ops.deduplicator.html#data_juicer.ops.deduplicator.ray_bts_minhash_deduplicator.GPUMinHashActor">GPUMinHashActor（data_juicer.ops.deduplicator.ray_bts_minhash_deduplicator 中的类）</a>
 </li>
         <li><a href="data_juicer.ops.html#data_juicer.ops.Grouper">Grouper（data_juicer.ops 中的类）</a>
 </li>
@@ -4597,12 +4758,12 @@
 </li>
         <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.ImageRemoveBackgroundMapper">ImageRemoveBackgroundMapper（data_juicer.ops.mapper 中的类）</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.image_remove_background_mapper.ImageRemoveBackgroundMapper">ImageRemoveBackgroundMapper（data_juicer.ops.mapper.image_remove_background_mapper 中的类）</a>
 </li>
         <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.ImageSegmentMapper">ImageSegmentMapper（data_juicer.ops.mapper 中的类）</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.image_segment_mapper.ImageSegmentMapper">ImageSegmentMapper（data_juicer.ops.mapper.image_segment_mapper 中的类）</a>
 </li>
         <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.ImageShapeFilter">ImageShapeFilter（data_juicer.ops.filter 中的类）</a>
@@ -4637,6 +4798,8 @@
 </li>
         <li><a href="data_juicer.config.html#data_juicer.config.config.init_setup_from_cfg">init_setup_from_cfg()（在 data_juicer.config.config 模块中）</a>
 </li>
+        <li><a href="data_juicer.utils.html#data_juicer.utils.constant.JobRequiredKeys.input">input（data_juicer.utils.constant.JobRequiredKeys 属性）</a>
+</li>
         <li><a href="data_juicer.utils.html#data_juicer.utils.mm_utils.insert_texts_after_placeholders">insert_texts_after_placeholders()（在 data_juicer.utils.mm_utils 模块中）</a>
 </li>
         <li><a href="data_juicer.core.html#data_juicer.core.Adapter.insight_mining">insight_mining() （data_juicer.core.Adapter 方法）</a>
@@ -4660,6 +4823,10 @@
         <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.imgdiff_difference_area_generator_mapper.is_noun">is_noun()（在 data_juicer.ops.mapper.imgdiff_difference_area_generator_mapper 模块中）</a>
 </li>
         <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.specified_numeric_field_filter.is_number">is_number()（在 data_juicer.ops.filter.specified_numeric_field_filter 模块中）</a>
+</li>
+        <li><a href="data_juicer.analysis.html#data_juicer.analysis.correlation_analysis.is_numeric_list_series">is_numeric_list_series()（在 data_juicer.analysis.correlation_analysis 模块中）</a>
+</li>
+        <li><a href="data_juicer.utils.html#data_juicer.utils.file_utils.is_remote_path">is_remote_path()（在 data_juicer.utils.file_utils 模块中）</a>
 </li>
         <li><a href="data_juicer.utils.html#data_juicer.utils.common_utils.is_string_list">is_string_list()（在 data_juicer.utils.common_utils 模块中）</a>
 </li>
@@ -4749,6 +4916,10 @@
 </li>
         <li><a href="data_juicer.utils.html#data_juicer.utils.registry.Registry.list">list() （data_juicer.utils.registry.Registry 方法）</a>
 </li>
+        <li><a href="data_juicer.utils.html#data_juicer.utils.constant.StatsKeysConstant.llm_analysis_record">llm_analysis_record（data_juicer.utils.constant.StatsKeysConstant 属性）</a>
+</li>
+        <li><a href="data_juicer.utils.html#data_juicer.utils.constant.StatsKeysConstant.llm_analysis_score">llm_analysis_score（data_juicer.utils.constant.StatsKeysConstant 属性）</a>
+</li>
         <li><a href="data_juicer.utils.html#data_juicer.utils.constant.StatsKeysConstant.llm_difficulty_record">llm_difficulty_record（data_juicer.utils.constant.StatsKeysConstant 属性）</a>
 </li>
         <li><a href="data_juicer.utils.html#data_juicer.utils.constant.StatsKeysConstant.llm_difficulty_score">llm_difficulty_score（data_juicer.utils.constant.StatsKeysConstant 属性）</a>
@@ -4756,6 +4927,10 @@
         <li><a href="data_juicer.utils.html#data_juicer.utils.constant.StatsKeysConstant.llm_quality_record">llm_quality_record（data_juicer.utils.constant.StatsKeysConstant 属性）</a>
 </li>
         <li><a href="data_juicer.utils.html#data_juicer.utils.constant.StatsKeysConstant.llm_quality_score">llm_quality_score（data_juicer.utils.constant.StatsKeysConstant 属性）</a>
+</li>
+        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.LLMAnalysisFilter">LLMAnalysisFilter（data_juicer.ops.filter 中的类）</a>
+</li>
+        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.llm_analysis_filter.LLMAnalysisFilter">LLMAnalysisFilter（data_juicer.ops.filter.llm_analysis_filter 中的类）</a>
 </li>
         <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.LLMDifficultyScoreFilter">LLMDifficultyScoreFilter（data_juicer.ops.filter 中的类）</a>
 </li>
@@ -4793,10 +4968,10 @@
 </li>
         <li><a href="data_juicer.core.data.html#data_juicer.core.data.load_strategy.RayLocalJsonDataLoadStrategy.load_data">load_data() （data_juicer.core.data.load_strategy.RayLocalJsonDataLoadStrategy 方法）</a>
 </li>
-        <li><a href="data_juicer.utils.html#data_juicer.utils.mm_utils.load_data_with_context">load_data_with_context()（在 data_juicer.utils.mm_utils 模块中）</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="data_juicer.utils.html#data_juicer.utils.mm_utils.load_data_with_context">load_data_with_context()（在 data_juicer.utils.mm_utils 模块中）</a>
+</li>
         <li><a href="data_juicer.core.data.html#data_juicer.core.data.dataset_builder.DatasetBuilder.load_dataset">load_dataset() （data_juicer.core.data.dataset_builder.DatasetBuilder 方法）</a>
 </li>
         <li><a href="data_juicer.format.html#data_juicer.format.empty_formatter.EmptyFormatter.load_dataset">load_dataset() （data_juicer.format.empty_formatter.EmptyFormatter 方法）</a>
@@ -4863,6 +5038,8 @@
 </li>
         <li><a href="data_juicer.format.html#data_juicer.format.formatter.LocalFormatter">LocalFormatter（data_juicer.format.formatter 中的类）</a>
 </li>
+        <li><a href="data_juicer.utils.html#data_juicer.utils.constant.JobRequiredKeys.local">local（data_juicer.utils.constant.JobRequiredKeys 属性）</a>
+</li>
         <li><a href="data_juicer.utils.html#data_juicer.utils.compress.Lz4Compressor">Lz4Compressor（data_juicer.utils.compress 中的类）</a>
 </li>
     </ul></td>
@@ -4873,6 +5050,8 @@
   <h2>M</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="data_juicer.tools.html#data_juicer.tools.op_search.main">main()（在 data_juicer.tools.op_search 模块中）</a>
+</li>
         <li><a href="data_juicer.utils.html#data_juicer.utils.constant.MetaKeys.main_entities">main_entities（data_juicer.utils.constant.MetaKeys 属性）</a>
 </li>
         <li><a href="data_juicer.utils.html#data_juicer.utils.logger_utils.make_log_summarization">make_log_summarization()（在 data_juicer.utils.logger_utils 模块中）</a>
@@ -4973,9 +5152,9 @@
 </li>
           <li><a href="data_juicer.analysis.html#module-data_juicer.analysis.column_wise_analysis">data_juicer.analysis.column_wise_analysis</a>
 </li>
-          <li><a href="data_juicer.analysis.html#module-data_juicer.analysis.diversity_analysis">data_juicer.analysis.diversity_analysis</a>
+          <li><a href="data_juicer.analysis.html#module-data_juicer.analysis.correlation_analysis">data_juicer.analysis.correlation_analysis</a>
 </li>
-          <li><a href="data_juicer.analysis.html#module-data_juicer.analysis.draw">data_juicer.analysis.draw</a>
+          <li><a href="data_juicer.analysis.html#module-data_juicer.analysis.diversity_analysis">data_juicer.analysis.diversity_analysis</a>
 </li>
           <li><a href="data_juicer.analysis.html#module-data_juicer.analysis.measure">data_juicer.analysis.measure</a>
 </li>
@@ -5020,6 +5199,8 @@
           <li><a href="data_juicer.core.html#module-data_juicer.core.exporter">data_juicer.core.exporter</a>
 </li>
           <li><a href="data_juicer.core.html#module-data_juicer.core.monitor">data_juicer.core.monitor</a>
+</li>
+          <li><a href="data_juicer.core.html#module-data_juicer.core.ray_exporter">data_juicer.core.ray_exporter</a>
 </li>
           <li><a href="data_juicer.core.html#module-data_juicer.core.tracer">data_juicer.core.tracer</a>
 </li>
@@ -5135,6 +5316,8 @@
 </li>
           <li><a href="data_juicer.ops.filter.html#module-data_juicer.ops.filter.language_id_score_filter">data_juicer.ops.filter.language_id_score_filter</a>
 </li>
+          <li><a href="data_juicer.ops.filter.html#module-data_juicer.ops.filter.llm_analysis_filter">data_juicer.ops.filter.llm_analysis_filter</a>
+</li>
           <li><a href="data_juicer.ops.filter.html#module-data_juicer.ops.filter.llm_difficulty_score_filter">data_juicer.ops.filter.llm_difficulty_score_filter</a>
 </li>
           <li><a href="data_juicer.ops.filter.html#module-data_juicer.ops.filter.llm_quality_score_filter">data_juicer.ops.filter.llm_quality_score_filter</a>
@@ -5238,6 +5421,8 @@
           <li><a href="data_juicer.ops.mapper.html#module-data_juicer.ops.mapper.dialog_sentiment_intensity_mapper">data_juicer.ops.mapper.dialog_sentiment_intensity_mapper</a>
 </li>
           <li><a href="data_juicer.ops.mapper.html#module-data_juicer.ops.mapper.dialog_topic_detection_mapper">data_juicer.ops.mapper.dialog_topic_detection_mapper</a>
+</li>
+          <li><a href="data_juicer.ops.mapper.html#module-data_juicer.ops.mapper.download_file_mapper">data_juicer.ops.mapper.download_file_mapper</a>
 </li>
           <li><a href="data_juicer.ops.mapper.html#module-data_juicer.ops.mapper.expand_macro_mapper">data_juicer.ops.mapper.expand_macro_mapper</a>
 </li>
@@ -5386,6 +5571,14 @@
           <li><a href="data_juicer.ops.selector.html#module-data_juicer.ops.selector.topk_specified_field_selector">data_juicer.ops.selector.topk_specified_field_selector</a>
 </li>
           <li><a href="data_juicer.tools.html#module-data_juicer.tools">data_juicer.tools</a>
+</li>
+          <li><a href="data_juicer.tools.html#module-data_juicer.tools.DJ_mcp_granular_ops">data_juicer.tools.DJ_mcp_granular_ops</a>
+</li>
+          <li><a href="data_juicer.tools.html#module-data_juicer.tools.DJ_mcp_recipe_flow">data_juicer.tools.DJ_mcp_recipe_flow</a>
+</li>
+          <li><a href="data_juicer.tools.html#module-data_juicer.tools.mcp_tool">data_juicer.tools.mcp_tool</a>
+</li>
+          <li><a href="data_juicer.tools.html#module-data_juicer.tools.op_search">data_juicer.tools.op_search</a>
 </li>
           <li><a href="data_juicer.utils.html#module-data_juicer.utils">data_juicer.utils</a>
 </li>
@@ -5548,6 +5741,10 @@
   <h2>O</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="data_juicer.tools.html#data_juicer.tools.op_search.OPRecord">OPRecord（data_juicer.tools.op_search 中的类）</a>
+</li>
+        <li><a href="data_juicer.tools.html#data_juicer.tools.op_search.OPSearcher">OPSearcher（data_juicer.tools.op_search 中的类）</a>
+</li>
         <li><a href="data_juicer.ops.deduplicator.html#data_juicer.ops.deduplicator.document_minhash_deduplicator.optimal_param">optimal_param()（在 data_juicer.ops.deduplicator.document_minhash_deduplicator 模块中）</a>
 </li>
         <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.OptimizeQAMapper">OptimizeQAMapper（data_juicer.ops.mapper 中的类）</a>
@@ -5556,15 +5753,17 @@
 </li>
         <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.OptimizeQueryMapper">OptimizeQueryMapper（data_juicer.ops.mapper 中的类）</a>
 </li>
-        <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.optimize_query_mapper.OptimizeQueryMapper">OptimizeQueryMapper（data_juicer.ops.mapper.optimize_query_mapper 中的类）</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.optimize_query_mapper.OptimizeQueryMapper">OptimizeQueryMapper（data_juicer.ops.mapper.optimize_query_mapper 中的类）</a>
+</li>
         <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.OptimizeResponseMapper">OptimizeResponseMapper（data_juicer.ops.mapper 中的类）</a>
 </li>
         <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.optimize_response_mapper.OptimizeResponseMapper">OptimizeResponseMapper（data_juicer.ops.mapper.optimize_response_mapper 中的类）</a>
 </li>
         <li><a href="data_juicer.ops.html#data_juicer.ops.base_op.OP">OP（data_juicer.ops.base_op 中的类）</a>
+</li>
+        <li><a href="data_juicer.utils.html#data_juicer.utils.constant.JobRequiredKeys.output">output（data_juicer.utils.constant.JobRequiredKeys 属性）</a>
 </li>
         <li><a href="data_juicer.analysis.html#data_juicer.analysis.OverallAnalysis">OverallAnalysis（data_juicer.analysis 中的类）</a>
 </li>
@@ -5606,13 +5805,9 @@
 </li>
         <li><a href="data_juicer.ops.aggregator.html#data_juicer.ops.aggregator.NestedAggregator.parse_output">parse_output() （data_juicer.ops.aggregator.NestedAggregator 方法）</a>
 </li>
-        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.llm_difficulty_score_filter.LLMDifficultyScoreFilter.parse_output">parse_output() （data_juicer.ops.filter.llm_difficulty_score_filter.LLMDifficultyScoreFilter 方法）</a>
+        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.llm_analysis_filter.LLMAnalysisFilter.parse_output">parse_output() （data_juicer.ops.filter.llm_analysis_filter.LLMAnalysisFilter 方法）</a>
 </li>
-        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.llm_quality_score_filter.LLMQualityScoreFilter.parse_output">parse_output() （data_juicer.ops.filter.llm_quality_score_filter.LLMQualityScoreFilter 方法）</a>
-</li>
-        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.LLMDifficultyScoreFilter.parse_output">parse_output() （data_juicer.ops.filter.LLMDifficultyScoreFilter 方法）</a>
-</li>
-        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.LLMQualityScoreFilter.parse_output">parse_output() （data_juicer.ops.filter.LLMQualityScoreFilter 方法）</a>
+        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.LLMAnalysisFilter.parse_output">parse_output() （data_juicer.ops.filter.LLMAnalysisFilter 方法）</a>
 </li>
         <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.calibrate_qa_mapper.CalibrateQAMapper.parse_output">parse_output() （data_juicer.ops.mapper.calibrate_qa_mapper.CalibrateQAMapper 方法）</a>
 </li>
@@ -5710,9 +5905,15 @@
 </li>
         <li><a href="data_juicer.utils.html#data_juicer.utils.model_utils.prepare_api_model">prepare_api_model()（在 data_juicer.utils.model_utils 模块中）</a>
 </li>
+        <li><a href="data_juicer.config.html#data_juicer.config.prepare_cfgs_for_export">prepare_cfgs_for_export()（在 data_juicer.config 模块中）</a>
+</li>
+        <li><a href="data_juicer.config.html#data_juicer.config.config.prepare_cfgs_for_export">prepare_cfgs_for_export()（在 data_juicer.config.config 模块中）</a>
+</li>
         <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.chinese_convert_mapper.prepare_converter">prepare_converter()（在 data_juicer.ops.mapper.chinese_convert_mapper 模块中）</a>
 </li>
         <li><a href="data_juicer.utils.html#data_juicer.utils.model_utils.prepare_diffusion_model">prepare_diffusion_model()（在 data_juicer.utils.model_utils 模块中）</a>
+</li>
+        <li><a href="data_juicer.utils.html#data_juicer.utils.model_utils.prepare_embedding_model">prepare_embedding_model()（在 data_juicer.utils.model_utils 模块中）</a>
 </li>
         <li><a href="data_juicer.utils.html#data_juicer.utils.model_utils.prepare_fastsam_model">prepare_fastsam_model()（在 data_juicer.utils.model_utils 模块中）</a>
 </li>
@@ -5912,7 +6113,13 @@
 </li>
         <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.CleanLinksMapper.process_batched">process_batched() （data_juicer.ops.mapper.CleanLinksMapper 方法）</a>
 </li>
+        <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.download_file_mapper.DownloadFileMapper.process_batched">process_batched() （data_juicer.ops.mapper.download_file_mapper.DownloadFileMapper 方法）</a>
+</li>
+        <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.DownloadFileMapper.process_batched">process_batched() （data_juicer.ops.mapper.DownloadFileMapper 方法）</a>
+</li>
         <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.expand_macro_mapper.ExpandMacroMapper.process_batched">process_batched() （data_juicer.ops.mapper.expand_macro_mapper.ExpandMacroMapper 方法）</a>
+</li>
+        <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.ExpandMacroMapper.process_batched">process_batched() （data_juicer.ops.mapper.ExpandMacroMapper 方法）</a>
 </li>
         <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.extract_event_mapper.ExtractEventMapper.process_batched">process_batched() （data_juicer.ops.mapper.extract_event_mapper.ExtractEventMapper 方法）</a>
 </li>
@@ -6054,6 +6261,8 @@
 </li>
         <li><a href="data_juicer.utils.html#data_juicer.utils.mm_utils.process_each_frame">process_each_frame()（在 data_juicer.utils.mm_utils 模块中）</a>
 </li>
+        <li><a href="data_juicer.tools.html#data_juicer.tools.DJ_mcp_granular_ops.process_parameter">process_parameter()（在 data_juicer.tools.DJ_mcp_granular_ops 模块中）</a>
+</li>
         <li><a href="data_juicer.ops.html#data_juicer.ops.Aggregator.process_single">process_single() （data_juicer.ops.Aggregator 方法）</a>
 </li>
         <li><a href="data_juicer.ops.aggregator.html#data_juicer.ops.aggregator.entity_attribute_aggregator.EntityAttributeAggregator.process_single">process_single() （data_juicer.ops.aggregator.entity_attribute_aggregator.EntityAttributeAggregator 方法）</a>
@@ -6144,9 +6353,13 @@
 </li>
         <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.LanguageIDScoreFilter.process_single">process_single() （data_juicer.ops.filter.LanguageIDScoreFilter 方法）</a>
 </li>
+        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.llm_analysis_filter.LLMAnalysisFilter.process_single">process_single() （data_juicer.ops.filter.llm_analysis_filter.LLMAnalysisFilter 方法）</a>
+</li>
         <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.llm_difficulty_score_filter.LLMDifficultyScoreFilter.process_single">process_single() （data_juicer.ops.filter.llm_difficulty_score_filter.LLMDifficultyScoreFilter 方法）</a>
 </li>
         <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.llm_quality_score_filter.LLMQualityScoreFilter.process_single">process_single() （data_juicer.ops.filter.llm_quality_score_filter.LLMQualityScoreFilter 方法）</a>
+</li>
+        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.LLMAnalysisFilter.process_single">process_single() （data_juicer.ops.filter.LLMAnalysisFilter 方法）</a>
 </li>
         <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.LLMDifficultyScoreFilter.process_single">process_single() （data_juicer.ops.filter.LLMDifficultyScoreFilter 方法）</a>
 </li>
@@ -6259,6 +6472,8 @@
         <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.DialogTopicDetectionMapper.process_single">process_single() （data_juicer.ops.mapper.DialogTopicDetectionMapper 方法）</a>
 </li>
         <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.Difference_Area_Generator_Mapper.process_single">process_single() （data_juicer.ops.mapper.Difference_Area_Generator_Mapper 方法）</a>
+</li>
+        <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.Difference_Caption_Generator_Mapper.process_single">process_single() （data_juicer.ops.mapper.Difference_Caption_Generator_Mapper 方法）</a>
 </li>
         <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.extract_entity_attribute_mapper.ExtractEntityAttributeMapper.process_single">process_single() （data_juicer.ops.mapper.extract_entity_attribute_mapper.ExtractEntityAttributeMapper 方法）</a>
 </li>
@@ -6476,6 +6691,10 @@
 </li>
         <li><a href="data_juicer.core.executor.html#data_juicer.core.executor.ray_executor.RayExecutor">RayExecutor（data_juicer.core.executor.ray_executor 中的类）</a>
 </li>
+        <li><a href="data_juicer.core.html#data_juicer.core.RayExporter">RayExporter（data_juicer.core 中的类）</a>
+</li>
+        <li><a href="data_juicer.core.html#data_juicer.core.ray_exporter.RayExporter">RayExporter（data_juicer.core.ray_exporter 中的类）</a>
+</li>
         <li><a href="data_juicer.core.data.html#data_juicer.core.data.load_strategy.RayHuggingfaceDataLoadStrategy">RayHuggingfaceDataLoadStrategy（data_juicer.core.data.load_strategy 中的类）</a>
 </li>
         <li><a href="data_juicer.ops.deduplicator.html#data_juicer.ops.deduplicator.RayImageDeduplicator">RayImageDeduplicator（data_juicer.ops.deduplicator 中的类）</a>
@@ -6487,6 +6706,8 @@
         <li><a href="data_juicer.ops.deduplicator.html#data_juicer.ops.deduplicator.RayVideoDeduplicator">RayVideoDeduplicator（data_juicer.ops.deduplicator 中的类）</a>
 </li>
         <li><a href="data_juicer.ops.deduplicator.html#data_juicer.ops.deduplicator.ray_video_deduplicator.RayVideoDeduplicator">RayVideoDeduplicator（data_juicer.ops.deduplicator.ray_video_deduplicator 中的类）</a>
+</li>
+        <li><a href="data_juicer.core.data.html#data_juicer.core.data.ray_dataset.RayDataset.read">read()（data_juicer.core.data.ray_dataset.RayDataset 类方法）</a>
 </li>
         <li><a href="data_juicer.core.data.html#data_juicer.core.data.ray_dataset.RayDataset.read_json">read_json()（data_juicer.core.data.ray_dataset.RayDataset 类方法）</a>
 </li>
@@ -6564,10 +6785,10 @@
 </li>
         <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.RemoveBibliographyMapper">RemoveBibliographyMapper（data_juicer.ops.mapper 中的类）</a>
 </li>
-        <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.remove_bibliography_mapper.RemoveBibliographyMapper">RemoveBibliographyMapper（data_juicer.ops.mapper.remove_bibliography_mapper 中的类）</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.remove_bibliography_mapper.RemoveBibliographyMapper">RemoveBibliographyMapper（data_juicer.ops.mapper.remove_bibliography_mapper 中的类）</a>
+</li>
         <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.RemoveCommentsMapper">RemoveCommentsMapper（data_juicer.ops.mapper 中的类）</a>
 </li>
         <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.remove_comments_mapper.RemoveCommentsMapper">RemoveCommentsMapper（data_juicer.ops.mapper.remove_comments_mapper 中的类）</a>
@@ -6684,6 +6905,8 @@
 </li>
         <li><a href="data_juicer.ops.html#data_juicer.ops.Selector.run">run() （data_juicer.ops.Selector 方法）</a>
 </li>
+        <li><a href="data_juicer.tools.html#data_juicer.tools.DJ_mcp_recipe_flow.run_data_recipe">run_data_recipe()（在 data_juicer.tools.DJ_mcp_recipe_flow 模块中）</a>
+</li>
         <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.phrase_grounding_recall_filter.run_ner">run_ner()（在 data_juicer.ops.filter.phrase_grounding_recall_filter 模块中）</a>
 </li>
         <li><a href="data_juicer.utils.html#data_juicer.utils.unittest_utils.DataJuicerTestCaseBase.run_single_op">run_single_op() （data_juicer.utils.unittest_utils.DataJuicerTestCaseBase 方法）</a>
@@ -6727,6 +6950,8 @@
         <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.SDXLPrompt2PromptMapper">SDXLPrompt2PromptMapper（data_juicer.ops.mapper 中的类）</a>
 </li>
         <li><a href="data_juicer.ops.mapper.html#data_juicer.ops.mapper.sdxl_prompt2prompt_mapper.SDXLPrompt2PromptMapper">SDXLPrompt2PromptMapper（data_juicer.ops.mapper.sdxl_prompt2prompt_mapper 中的类）</a>
+</li>
+        <li><a href="data_juicer.tools.html#data_juicer.tools.op_search.OPSearcher.search">search() （data_juicer.tools.op_search.OPSearcher 方法）</a>
 </li>
         <li><a href="data_juicer.core.data.html#data_juicer.core.data.dj_dataset.NestedDataset.select">select() （data_juicer.core.data.dj_dataset.NestedDataset 方法）</a>
 </li>
@@ -6806,10 +7031,10 @@
 </li>
         <li><a href="data_juicer.utils.html#data_juicer.utils.constant.StatsKeysConstant.special_char_ratio">special_char_ratio（data_juicer.utils.constant.StatsKeysConstant 属性）</a>
 </li>
-        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.SpecialCharactersFilter">SpecialCharactersFilter（data_juicer.ops.filter 中的类）</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.SpecialCharactersFilter">SpecialCharactersFilter（data_juicer.ops.filter 中的类）</a>
+</li>
         <li><a href="data_juicer.ops.filter.html#data_juicer.ops.filter.special_characters_filter.SpecialCharactersFilter">SpecialCharactersFilter（data_juicer.ops.filter.special_characters_filter 中的类）</a>
 </li>
         <li><a href="data_juicer.utils.html#data_juicer.utils.mm_utils.SpecialTokens">SpecialTokens（data_juicer.utils.mm_utils 中的类）</a>
@@ -6938,7 +7163,7 @@
 </li>
         <li><a href="data_juicer.utils.html#data_juicer.utils.constant.MetaKeys.target_entity">target_entity（data_juicer.utils.constant.MetaKeys 属性）</a>
 </li>
-        <li><a href="data_juicer.utils.html#data_juicer.utils.unittest_utils.DataJuicerTestCaseBase.tearDown">tearDown()（data_juicer.utils.unittest_utils.DataJuicerTestCaseBase 类方法）</a>
+        <li><a href="data_juicer.utils.html#data_juicer.utils.unittest_utils.DataJuicerTestCaseBase.tearDown">tearDown() （data_juicer.utils.unittest_utils.DataJuicerTestCaseBase 方法）</a>
 </li>
         <li><a href="data_juicer.utils.html#data_juicer.utils.unittest_utils.DataJuicerTestCaseBase.tearDownClass">tearDownClass()（data_juicer.utils.unittest_utils.DataJuicerTestCaseBase 类方法）</a>
 </li>
@@ -6982,15 +7207,31 @@
 </li>
         <li><a href="data_juicer.utils.html#data_juicer.utils.mm_utils.timecode_string_to_seconds">timecode_string_to_seconds()（在 data_juicer.utils.mm_utils 模块中）</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="data_juicer.config.html#data_juicer.config.config.timing_context">timing_context()（在 data_juicer.config.config 模块中）</a>
+</li>
+        <li><a href="data_juicer.tools.html#data_juicer.tools.op_search.OPRecord.to_dict">to_dict() （data_juicer.tools.op_search.OPRecord 方法）</a>
+</li>
         <li><a href="data_juicer.core.html#data_juicer.core.Exporter.to_json">to_json()（data_juicer.core.Exporter 静态方法）</a>
 </li>
         <li><a href="data_juicer.core.html#data_juicer.core.exporter.Exporter.to_json">to_json()（data_juicer.core.exporter.Exporter 静态方法）</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="data_juicer.core.html#data_juicer.core.Exporter.to_jsonl">to_jsonl()（data_juicer.core.Exporter 静态方法）</a>
 </li>
         <li><a href="data_juicer.core.html#data_juicer.core.exporter.Exporter.to_jsonl">to_jsonl()（data_juicer.core.exporter.Exporter 静态方法）</a>
+</li>
+        <li><a href="data_juicer.core.data.html#data_juicer.core.data.dj_dataset.DJDataset.to_list">to_list() （data_juicer.core.data.dj_dataset.DJDataset 方法）</a>
+</li>
+        <li><a href="data_juicer.core.data.html#data_juicer.core.data.dj_dataset.NestedDataset.to_list">to_list() （data_juicer.core.data.dj_dataset.NestedDataset 方法）</a>
+</li>
+        <li><a href="data_juicer.core.data.html#data_juicer.core.data.DJDataset.to_list">to_list() （data_juicer.core.data.DJDataset 方法）</a>
+</li>
+        <li><a href="data_juicer.core.data.html#data_juicer.core.data.NestedDataset.to_list">to_list() （data_juicer.core.data.NestedDataset 方法）</a>
+</li>
+        <li><a href="data_juicer.core.data.html#data_juicer.core.data.ray_dataset.RayDataset.to_list">to_list() （data_juicer.core.data.ray_dataset.RayDataset 方法）</a>
+</li>
+        <li><a href="data_juicer.core.html#data_juicer.core.NestedDataset.to_list">to_list() （data_juicer.core.NestedDataset 方法）</a>
 </li>
         <li><a href="data_juicer.core.html#data_juicer.core.Exporter.to_parquet">to_parquet()（data_juicer.core.Exporter 静态方法）</a>
 </li>
@@ -7357,7 +7598,7 @@
     </aside>
   </div>
 </div>
-<script src="_static/documentation_options.js?v=79f47a88"></script>
+<script src="_static/documentation_options.js?v=2491dde2"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=5fa4622c"></script>

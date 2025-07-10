@@ -214,7 +214,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../docs/DatasetCfg_ZH.html">数据集配置指南</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../docs/BadDataExhibition_ZH.html">“坏”数据展览</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../docs/DJ_SORA_ZH.html">DJ-SORA</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../docs/DJ_service_ZH.html">API服务化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/DJ_service_ZH.html">DJ_服务化</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../docs/DeveloperGuide_ZH.html">开发者指南</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../docs/Distributed_ZH.html">Data-Juicer 分布式数据处理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../docs/Sandbox_ZH.html">沙盒实验室</a></li>
@@ -359,7 +359,8 @@
 
 <span class="sd">    Default suffixes is `[&#39;.parquet&#39;]`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">SUFFIXES</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;.parquet&#39;</span><span class="p">]</span>
+
+    <span class="n">SUFFIXES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;.parquet&quot;</span><span class="p">]</span>
 
 <div class="viewcode-block" id="ParquetFormatter.__init__">
 <a class="viewcode-back" href="../../../data_juicer.format.html#data_juicer.format.parquet_formatter.ParquetFormatter.__init__">[文档]</a>
@@ -374,7 +375,7 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
             <span class="n">dataset_path</span><span class="o">=</span><span class="n">dataset_path</span><span class="p">,</span>
             <span class="n">suffixes</span><span class="o">=</span><span class="n">suffixes</span> <span class="k">if</span> <span class="n">suffixes</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">SUFFIXES</span><span class="p">,</span>
-            <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;parquet&#39;</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;parquet&quot;</span><span class="p">,</span>
             <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
         <span class="p">)</span></div>
 </div>
@@ -412,7 +413,7 @@
     </aside>
   </div>
 </div>
-<script src="../../../_static/documentation_options.js?v=79f47a88"></script>
+<script src="../../../_static/documentation_options.js?v=2491dde2"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/scripts/furo.js?v=5fa4622c"></script>

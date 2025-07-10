@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><link rel="index" title="索引" href="../../../genindex.html" /><link rel="search" title="搜索" href="../../../search.html" />
 
     <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
-        <title>data_juicer.analysis.draw - data-juicer</title>
+        <title>data_juicer.tools.DJ_mcp_recipe_flow - data-juicer</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
@@ -214,7 +214,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../docs/DatasetCfg_ZH.html">数据集配置指南</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../docs/BadDataExhibition_ZH.html">“坏”数据展览</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../docs/DJ_SORA_ZH.html">DJ-SORA</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../docs/DJ_service_ZH.html">API服务化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/DJ_service_ZH.html">DJ_服务化</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../docs/DeveloperGuide_ZH.html">开发者指南</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../docs/Distributed_ZH.html">Data-Juicer 分布式数据处理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../docs/Sandbox_ZH.html">沙盒实验室</a></li>
@@ -293,12 +293,12 @@
             <dt>Language</dt>
             <dd>
                 
-                <a href="../../../../../en/main/_modules/data_juicer/analysis/draw.html"
+                <a href="../../../../../en/main/_modules/data_juicer/tools/DJ_mcp_recipe_flow.html"
                     >
                     English
                 </a>
                 
-                <a href="../../../../../zh_CN/main/_modules/data_juicer/analysis/draw_ZH.html"
+                <a href="../../../../../zh_CN/main/_modules/data_juicer/tools/DJ_mcp_recipe_flow_ZH.html"
                     >
                     简体中文
                 </a>
@@ -311,7 +311,7 @@
         <div class="section">
             <dt>Version</dt>
             <dd>
-                    <a href="draw.html">main</a>
+                    <a href="DJ_mcp_recipe_flow.html">main</a>
             </dd>
         </div>
         
@@ -346,58 +346,174 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <h1>data_juicer.analysis.draw 源代码</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+          <h1>data_juicer.tools.DJ_mcp_recipe_flow 源代码</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">argparse</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">mcp.server.fastmcp</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastMCP</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">data_juicer.tools.mcp_tool</span><span class="w"> </span><span class="kn">import</span> <span class="n">execute_op</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">data_juicer.tools.op_search</span><span class="w"> </span><span class="kn">import</span> <span class="n">OPSearcher</span>
+
+<span class="c1"># Operator Management</span>
+<span class="n">ops_list_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DJ_OPS_LIST_PATH&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">ops_list_path</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">ops_list_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">ops_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">file</span> <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()]</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">ops_list</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">searcher</span> <span class="o">=</span> <span class="n">OPSearcher</span><span class="p">(</span><span class="n">ops_list</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="draw_heatmap">
-<a class="viewcode-back" href="../../../data_juicer.analysis.html#data_juicer.analysis.draw.draw_heatmap">[文档]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">draw_heatmap</span><span class="p">(</span><span class="n">data</span><span class="p">,</span>
-                 <span class="n">xlabels</span><span class="p">,</span>
-                 <span class="n">ylabels</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span>
-                 <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="n">triangle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                 <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="c1"># Operator Management</span>
+<div class="viewcode-block" id="get_data_processing_ops">
+<a class="viewcode-back" href="../../../data_juicer.tools.html#data_juicer.tools.DJ_mcp_recipe_flow.get_data_processing_ops">[文档]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_data_processing_ops</span><span class="p">(</span>
+    <span class="n">op_type</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">tags</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">match_all</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Draw heatmap of input data with special labels.</span>
+<span class="sd">    Retrieves a list of available data processing operators based on the specified type and tags.</span>
+<span class="sd">    Operators are a collection of basic processes that assist in data modification,</span>
+<span class="sd">    cleaning, filtering, deduplication, etc.</span>
 
-<span class="sd">    :param data: input data, now support</span>
-<span class="sd">        [`list`, `tuple`, `numpy array`, &#39;torch tensor&#39;]</span>
-<span class="sd">    :param xlabels: x axis labels.</span>
-<span class="sd">    :param ylabels: y axis labels, if None, use xlabels.</span>
-<span class="sd">    :param figsize: figure size.</span>
-<span class="sd">    :param triangle: only display triangle.</span>
-<span class="sd">    :return: a plot figure.</span>
+<span class="sd">    Should be used with `run_data_recipe`.</span>
+
+<span class="sd">    If both tags and ops_type are None, return a list of all operators.</span>
+
+<span class="sd">    The following `op_type` values are supported:</span>
+<span class="sd">    - aggregator: Aggregate for batched samples, such as summary or conclusion.</span>
+<span class="sd">    - deduplicator: Detects and removes duplicate samples.</span>
+<span class="sd">    - filter: Filters out low-quality samples.</span>
+<span class="sd">    - grouper: Group samples to batched samples.</span>
+<span class="sd">    - mapper: Edits and transforms samples.</span>
+<span class="sd">    - selector: Selects top samples based on ranking.</span>
+
+<span class="sd">    The `tags` parameter specifies the characteristics of the data or the required resources.</span>
+<span class="sd">    Available tags are:</span>
+
+<span class="sd">    Modality Tags:</span>
+<span class="sd">        - text: process text data specifically.</span>
+<span class="sd">        - image: process image data specifically.</span>
+<span class="sd">        - audio: process audio data specifically.</span>
+<span class="sd">        - video: process video data specifically.</span>
+<span class="sd">        - multimodal: process multimodal data.</span>
+
+<span class="sd">    Resource Tags:</span>
+<span class="sd">        - cpu: only requires CPU resource.</span>
+<span class="sd">        - gpu: requires GPU/CUDA resource as well.</span>
+
+<span class="sd">    Model Tags:</span>
+<span class="sd">        - api: equipped with API-based models (e.g. ChatGPT, GPT-4o).</span>
+<span class="sd">        - vllm: equipped with models supported by vLLM.</span>
+<span class="sd">        - hf: equipped with models from HuggingFace Hub.</span>
+
+<span class="sd">    Tags are used to refine the search for suitable operators based on specific data processing needs.</span>
+
+<span class="sd">    :param op_type: The type of data processing operator to retrieve.</span>
+<span class="sd">                     If None, no ops_type-based filtering is applied.</span>
+<span class="sd">                     If specified, must be one of the values listed. Defaults to None.</span>
+<span class="sd">    :param tags: An optional list of tags to filter operators.  See the tag list above for options.</span>
+<span class="sd">                 If None, no tag-based filtering is applied. Defaults to None.</span>
+<span class="sd">    :param match_all: If True, only operators matching all specified tags are returned.</span>
+<span class="sd">                      If False, operators matching any of the specified tags are returned. Defaults to True.</span>
+<span class="sd">    :returns: A dict containing detailed information about the available operators</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">figsize</span> <span class="o">=</span> <span class="n">figsize</span> <span class="k">if</span> <span class="n">figsize</span> <span class="k">else</span> <span class="p">(</span><span class="mi">8</span> <span class="o">*</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">6</span> <span class="o">*</span> <span class="mf">2.5</span><span class="p">)</span>
-    <span class="n">_</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
-    <span class="n">mask</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="k">if</span> <span class="n">triangle</span><span class="p">:</span>
-        <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">triu</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span>
-        <span class="n">right</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">top</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">labelright</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">labeltop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">data</span><span class="p">,</span>
-                <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
-                <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Oranges&#39;</span><span class="p">,</span>
-                <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span>
-                <span class="n">linewidths</span><span class="o">=</span><span class="mf">.05</span><span class="p">,</span>
-                <span class="n">square</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                <span class="n">xticklabels</span><span class="o">=</span><span class="n">xlabels</span><span class="p">,</span>
-                <span class="n">yticklabels</span><span class="o">=</span><span class="n">ylabels</span><span class="p">,</span>
-                <span class="n">annot_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">})</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">.1</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.22</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.95</span><span class="p">)</span>
-    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">show</span><span class="p">:</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">fig</span></div>
+    <span class="n">op_results</span> <span class="o">=</span> <span class="n">searcher</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">,</span> <span class="n">op_type</span><span class="o">=</span><span class="n">op_type</span><span class="p">,</span> <span class="n">match_all</span><span class="o">=</span><span class="n">match_all</span><span class="p">)</span>
 
+    <span class="n">ops_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">op_results</span><span class="p">:</span>
+        <span class="n">ops_dict</span><span class="p">[</span><span class="n">op</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">op</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">],</span> <span class="n">op</span><span class="p">[</span><span class="s2">&quot;param_desc&quot;</span><span class="p">],</span> <span class="s2">&quot;Parameters: &quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">op</span><span class="p">[</span><span class="s2">&quot;signature&quot;</span><span class="p">])])</span>
+
+    <span class="k">return</span> <span class="n">ops_dict</span></div>
+
+
+
+<div class="viewcode-block" id="run_data_recipe">
+<a class="viewcode-back" href="../../../data_juicer.tools.html#data_juicer.tools.DJ_mcp_recipe_flow.run_data_recipe">[文档]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">run_data_recipe</span><span class="p">(</span>
+    <span class="n">dataset_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">process</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Dict</span><span class="p">],</span>
+    <span class="n">export_path</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">np</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Run data recipe.</span>
+<span class="sd">    If you want to run one or more DataJuicer data processing operators, you can</span>
+<span class="sd">    use this tool. Supported operators and their arguments should be obtained</span>
+<span class="sd">    through the `get_data_processing_ops` tool.</span>
+
+<span class="sd">    :param dataset_path: Path to the dataset to be processed.</span>
+<span class="sd">    :param process: List of processing operations to be executed sequentially.</span>
+<span class="sd">                Each element is a dictionary with operator name as key and</span>
+<span class="sd">                its configuration as value. Multiple operators can be chained.</span>
+<span class="sd">    :param export_path: Path to export the processed dataset. Defaults to None,</span>
+<span class="sd">                       which exports to &#39;./outputs&#39; directory.</span>
+<span class="sd">    :param np: Number of processes to use. Defaults to 1.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        # First get available filter operators for text data</span>
+<span class="sd">        &gt;&gt;&gt; available_ops = get_data_processing_ops(</span>
+<span class="sd">        ...     op_type=&quot;filter&quot;,</span>
+<span class="sd">        ...     tags=[&quot;text&quot;]</span>
+<span class="sd">        ... )</span>
+
+<span class="sd">        # Then run a data recipe with selected filters:</span>
+<span class="sd">        # 1. First filter samples with text length 10-50</span>
+<span class="sd">        # 2. Then filter English samples with language confidence score &gt;= 0.8</span>
+<span class="sd">        &gt;&gt;&gt; run_data_recipe(</span>
+<span class="sd">        ...     &quot;/path/to/dataset.jsonl&quot;,</span>
+<span class="sd">        ...     [</span>
+<span class="sd">        ...         {</span>
+<span class="sd">        ...             &quot;text_length_filter&quot;: {</span>
+<span class="sd">        ...                 &quot;min_len&quot;: 10,</span>
+<span class="sd">        ...                 &quot;max_len&quot;: 50</span>
+<span class="sd">        ...             }</span>
+<span class="sd">        ...         },</span>
+<span class="sd">        ...         {</span>
+<span class="sd">        ...             &quot;language_id_score_filter&quot;: {</span>
+<span class="sd">        ...                 &quot;lang&quot;: &quot;en&quot;,</span>
+<span class="sd">        ...                 &quot;min_score&quot;: 0.8</span>
+<span class="sd">        ...             }</span>
+<span class="sd">        ...         }</span>
+<span class="sd">        ...     ]</span>
+<span class="sd">        ... )</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dj_cfg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">locals</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">execute_op</span><span class="p">(</span><span class="n">dj_cfg</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="create_mcp_server">
+<a class="viewcode-back" href="../../../data_juicer.tools.html#data_juicer.tools.DJ_mcp_recipe_flow.create_mcp_server">[文档]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_mcp_server</span><span class="p">(</span><span class="n">port</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;8000&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creates the FastMCP server and registers the tools.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        port (str, optional): Port number. Defaults to &quot;8000&quot;.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">mcp</span> <span class="o">=</span> <span class="n">FastMCP</span><span class="p">(</span><span class="s2">&quot;Data-Juicer Server&quot;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">port</span><span class="p">)</span>
+
+    <span class="n">mcp</span><span class="o">.</span><span class="n">tool</span><span class="p">()(</span><span class="n">get_data_processing_ops</span><span class="p">)</span>
+    <span class="n">mcp</span><span class="o">.</span><span class="n">tool</span><span class="p">()(</span><span class="n">run_data_recipe</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">mcp</span></div>
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Data-Juicer MCP Server&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s2">&quot;--port&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;8000&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Port number for the MCP server&quot;</span>
+    <span class="p">)</span>  <span class="c1"># changed to str for consistency</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+    <span class="c1"># Server configuration</span>
+    <span class="n">mcp</span> <span class="o">=</span> <span class="n">create_mcp_server</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">port</span><span class="p">)</span>
+    <span class="n">mcp</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">transport</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;SERVER_TRANSPORT&quot;</span><span class="p">,</span> <span class="s2">&quot;sse&quot;</span><span class="p">))</span>
 </pre></div>
         </article>
       </div>
@@ -431,7 +547,7 @@
     </aside>
   </div>
 </div>
-<script src="../../../_static/documentation_options.js?v=79f47a88"></script>
+<script src="../../../_static/documentation_options.js?v=2491dde2"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/scripts/furo.js?v=5fa4622c"></script>
