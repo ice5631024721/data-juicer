@@ -44,6 +44,7 @@ class ImageDiffusionMapper(Mapper):
         keep_original_sample: bool = True,
         caption_key: Optional[str] = None,
         hf_img2seq: str = "Salesforce/blip2-opt-2.7b",
+        save_dir: str = None,
         *args,
         **kwargs,
     ):
@@ -96,16 +97,21 @@ class ImageDiffusionMapper(Mapper):
             ImageDiffusionMapper will produce captions for each images.
         :param hf_img2seq: model name on huggingface to generate caption if
             caption_key is None.
+        :param save_dir: The directory where generated image files will be stored.
+            If not specified, outputs will be saved in the same directory as their corresponding input files.
+            This path can alternatively be defined by setting the `DJ_PRODUCED_DATA_DIR` environment variable.
         """
         kwargs.setdefault("mem_required", "8GB")
         super().__init__(*args, **kwargs)
         self._init_parameters = self.remove_extra_parameters(locals())
+        self._init_parameters.pop("save_dir", None)
         self.strength = strength
         self.guidance_scale = guidance_scale
         self.aug_num = aug_num
         self.keep_original_sample = keep_original_sample
         self.caption_key = caption_key
         self.prompt = "A photo of a "
+        self.save_dir = save_dir
         if not self.caption_key:
             from .image_captioning_mapper import ImageCaptioningMapper
 
@@ -150,7 +156,9 @@ class ImageDiffusionMapper(Mapper):
 
         # load images
         loaded_image_keys = ori_sample[self.image_key]
-        ori_sample, images = load_data_with_context(ori_sample, context, loaded_image_keys, load_image)
+        ori_sample, images = load_data_with_context(
+            ori_sample, context, loaded_image_keys, load_image, mm_bytes_key=self.image_bytes_key
+        )
 
         # load captions
         if self.caption_key:
@@ -177,15 +185,24 @@ class ImageDiffusionMapper(Mapper):
             diffusion_image_keys = []
             for index, value in enumerate(loaded_image_keys):
                 related_parameters = self.add_parameters(self._init_parameters, caption=captions[index])
-                diffusion_image_key = transfer_filename(value, OP_NAME, **related_parameters)
+                diffusion_image_key = transfer_filename(value, OP_NAME, self.save_dir, **related_parameters)
                 diffusion_image_keys.append(diffusion_image_key)
-                # TODO: duplicated generation if image is reused
-                if not os.path.exists(diffusion_image_key) or diffusion_image_key not in images:
+                if diffusion_image_key != value:
+                    if not os.path.exists(diffusion_image_key) or diffusion_image_key not in images:
+                        diffusion_image = self._real_guidance(captions[index], images[value], rank=rank)
+                        images[diffusion_image_key] = diffusion_image
+                        diffusion_image.save(diffusion_image_key)
+                        if context:
+                            generated_samples[aug_id][Fields.context][diffusion_image_key] = diffusion_image
+                else:
                     diffusion_image = self._real_guidance(captions[index], images[value], rank=rank)
                     images[diffusion_image_key] = diffusion_image
-                    diffusion_image.save(diffusion_image_key)
                     if context:
                         generated_samples[aug_id][Fields.context][diffusion_image_key] = diffusion_image
+                if self.image_bytes_key in generated_samples[aug_id] and index < len(
+                    generated_samples[aug_id][self.image_bytes_key]
+                ):
+                    generated_samples[aug_id][self.image_bytes_key][index] = images[diffusion_image_key].tobytes()
             generated_samples[aug_id][self.image_key] = diffusion_image_keys
 
         return generated_samples

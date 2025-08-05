@@ -56,10 +56,41 @@ class FileUtilsTest(DataJuicerTestCaseBase):
         self.assertTrue(os.path.exists(self.temp_output_path))
 
     def test_transfer_filename(self):
+        # test existing file
+        with open(os.path.join(self.temp_output_path, 'abc.jpg'), 'w') as f:
+            f.write('test')
         self.assertTrue(
             re.match(
                 os.path.join(self.temp_output_path, Fields.multimodal_data_output_dir, 'op1', 'abc__dj_hash_#(.*?)#.jpg'),
                 transfer_filename(os.path.join(self.temp_output_path, 'abc.jpg'), 'op1')))
+        # test non-existing file
+        self.assertTrue(
+            re.match(
+                os.path.join(self.temp_output_path, 'non-existing.jpg'),
+                transfer_filename(os.path.join(self.temp_output_path, 'non-existing.jpg'), 'op1')))
+        # test save_dir
+        self.temp_output_path = os.path.abspath(self.temp_output_path)
+        self.assertTrue(
+            re.match(
+                os.path.join(self.temp_output_path, 'tmp_save_dir', 'abc__dj_hash_#(.*?)#.jpg'),
+                transfer_filename(os.path.join(self.temp_output_path, 'abc.jpg'), 'op1', 
+                                  save_dir=os.path.join(self.temp_output_path, 'tmp_save_dir'))))
+        # test env dir
+        try:
+            ori_env_dir = os.environ.get('DJ_PRODUCED_DATA_DIR', None)
+            test_env_dir = os.path.join(self.temp_output_path, 'tmp_env_dir')
+            os.environ['DJ_PRODUCED_DATA_DIR'] = test_env_dir
+
+            transfer_filename(os.path.join(self.temp_output_path, 'abc.jpg'), 'op1')
+            self.assertTrue(
+                re.match(
+                    os.path.join(test_env_dir, 'op1', 'abc__dj_hash_#(.*?)#.jpg'),
+                    transfer_filename(os.path.join(self.temp_output_path, 'abc.jpg'), 'op1')))
+        finally:
+            if ori_env_dir:
+                os.environ['DJ_PRODUCED_DATA_DIR'] = ori_env_dir
+            elif 'DJ_PRODUCED_DATA_DIR' in os.environ:
+                del os.environ['DJ_PRODUCED_DATA_DIR']
 
     def test_copy_data(self):
         tgt_fn = 'test.txt'

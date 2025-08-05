@@ -168,6 +168,14 @@ def init_configs(args: Optional[List[str]] = None, which_entry: object = None, l
                 "directory of this process.",
             )
             parser.add_argument(
+                "--export_type",
+                type=str,
+                default=None,
+                help="The export format type. If it's not specified, Data-Juicer will parse from the export_path. The "
+                "supported types can be found in Exporter._router() for standalone mode and "
+                "RayExporter._SUPPORTED_FORMATS for ray mode",
+            )
+            parser.add_argument(
                 "--export_shard_size",
                 type=NonNegativeInt,
                 default=0,
@@ -189,6 +197,13 @@ def init_configs(args: Optional[List[str]] = None, which_entry: object = None, l
                 "due to the IO blocking, especially for very large datasets. "
                 "When this happens, False is a better choice, although it takes "
                 "more time.",
+            )
+            parser.add_argument(
+                "--export_extra_args",
+                type=Dict,
+                default={},
+                help="Other optional arguments for exporting in dict. For example, the key mapping info for exporting "
+                "the WebDataset format.",
             )
             parser.add_argument(
                 "--keep_stats_in_res_ds",
@@ -223,6 +238,12 @@ def init_configs(args: Optional[List[str]] = None, which_entry: object = None, l
                 type=str,
                 default="images",
                 help="Key name of field to store the list of sample image paths.",  # noqa: E251
+            )
+            parser.add_argument(
+                "--image_bytes_key",
+                type=str,
+                default="image_bytes",
+                help="Key name of field to store the list of sample image bytes.",  # noqa: E251
             )
             parser.add_argument(
                 "--image_special_token",
@@ -464,6 +485,7 @@ def init_configs(args: Optional[List[str]] = None, which_entry: object = None, l
             essential_cfg = parser.parse_args(args=essential_args)
 
             # Now add remaining arguments based on essential config
+            used_ops = None
             if essential_cfg.config:
                 # Load config file to determine which operators are used
                 with open(os.path.abspath(essential_cfg.config[0])) as f:
@@ -560,19 +582,19 @@ def init_setup_from_cfg(cfg: Namespace, load_configs_only=False):
         setup_logger(
             save_dir=log_dir,
             filename=logfile_name,
-            level="DEBUG" if cfg.debug else "INFO",
-            redirect=cfg.executor_type == "default",
+            level="DEBUG" if cfg.get("debug", False) else "INFO",
+            redirect=cfg.get("executor_type", "default") == "default",
         )
 
     # check and get dataset dir
     if cfg.get("dataset_path", None) and os.path.exists(cfg.dataset_path):
         logger.info("dataset_path config is set and a valid local path")
         cfg.dataset_path = os.path.abspath(cfg.dataset_path)
-    elif cfg.dataset_path == "" and cfg.get("dataset", None):
+    elif cfg.get("dataset_path", "") == "" and cfg.get("dataset", None):
         logger.info("dataset_path config is empty; dataset is present")
     else:
         logger.warning(
-            f"dataset_path [{cfg.dataset_path}] is not a valid "
+            f"dataset_path [{cfg.get('dataset_path', '')}] is not a valid "
             f"local path, AND dataset is not present. "
             f"Please check and retry, otherwise we "
             f"will treat dataset_path as a remote dataset or a "
@@ -581,7 +603,7 @@ def init_setup_from_cfg(cfg: Namespace, load_configs_only=False):
 
     # check number of processes np
     sys_cpu_count = os.cpu_count()
-    if not cfg.np:
+    if cfg.get("np", None) is None:
         cfg.np = sys_cpu_count
         logger.warning(
             f"Number of processes `np` is not set, " f"set it to cpu count [{sys_cpu_count}] as default value."
@@ -600,7 +622,7 @@ def init_setup_from_cfg(cfg: Namespace, load_configs_only=False):
     # whether or not to use cache management
     # disabling the cache or using checkpoint explicitly will turn off the
     # cache management.
-    if not cfg.use_cache or cfg.use_checkpoint:
+    if not cfg.get("use_cache", True) or cfg.get("use_checkpoint", False):
         logger.warning("Cache management of datasets is disabled.")
         from datasets import disable_caching
 
@@ -621,7 +643,7 @@ def init_setup_from_cfg(cfg: Namespace, load_configs_only=False):
         tempfile.tempdir = cfg.temp_dir
 
     # The checkpoint mode is not compatible with op fusion for now.
-    if cfg.op_fusion:
+    if cfg.get("op_fusion", False):
         cfg.use_checkpoint = False
         cfg.fusion_strategy = cfg.fusion_strategy.lower()
         if cfg.fusion_strategy not in FUSION_STRATEGIES:
@@ -632,7 +654,7 @@ def init_setup_from_cfg(cfg: Namespace, load_configs_only=False):
     # update huggingface datasets cache directory only when ds_cache_dir is set
     from datasets import config
 
-    if cfg.ds_cache_dir:
+    if cfg.get("ds_cache_dir", None) is not None:
         logger.warning(
             f"Set dataset cache directory to {cfg.ds_cache_dir} "
             f"using the ds_cache_dir argument, which is "
@@ -643,30 +665,32 @@ def init_setup_from_cfg(cfg: Namespace, load_configs_only=False):
     else:
         cfg.ds_cache_dir = str(config.HF_DATASETS_CACHE)
 
-    # update special tokens
-    SpecialTokens.image = cfg.image_special_token
-    SpecialTokens.eoc = cfg.eoc_special_token
-
     # add all filters that produce stats
-    if cfg.auto:
+    if cfg.get("auto", False):
         cfg.process = load_ops_with_stats_meta()
 
     # Apply text_key modification during initializing configs
     # users can freely specify text_key for different ops using `text_key`
     # otherwise, set arg text_key of each op to text_keys
+    cfg.text_keys = cfg.get("text_keys", "text")
     if isinstance(cfg.text_keys, list):
         text_key = cfg.text_keys[0]
     else:
         text_key = cfg.text_keys
     op_attrs = {
         "text_key": text_key,
-        "image_key": cfg.image_key,
-        "audio_key": cfg.audio_key,
-        "video_key": cfg.video_key,
+        "image_key": cfg.get("image_key", "images"),
+        "audio_key": cfg.get("audio_key", "audios"),
+        "video_key": cfg.get("video_key", "videos"),
+        "image_bytes_key": cfg.get("image_bytes_key", "image_bytes"),
         "num_proc": cfg.np,
-        "turbo": cfg.turbo,
-        "skip_op_error": cfg.skip_op_error,
+        "turbo": cfg.get("turbo", False),
+        "skip_op_error": cfg.get("skip_op_error", True),
         "work_dir": cfg.work_dir,
+        "image_special_token": cfg.get("image_special_token", SpecialTokens.image),
+        "audio_special_token": cfg.get("audio_special_token", SpecialTokens.audio),
+        "video_special_token": cfg.get("video_special_token", SpecialTokens.video),
+        "eoc_special_token": cfg.get("eoc_special_token", SpecialTokens.eoc),
     }
     cfg.process = update_op_attr(cfg.process, op_attrs)
 
@@ -872,7 +896,7 @@ def namespace_to_arg_list(namespace, prefix="", includes=None, excludes=None):
 
 
 def config_backup(cfg: Namespace):
-    if not cfg.config:
+    if not cfg.get("config", None):
         return
     cfg_path = os.path.abspath(cfg.config[0])
     work_dir = cfg.work_dir
